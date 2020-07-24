@@ -30,33 +30,21 @@ console.log("...........................");
 var temp = 25;
 while(temp > 0){
     console.log("The temperature is " + temp + ". I can handle it!");
-    temp--;
+    temp=temp-2;
 }
 /*
 The temperature is 25. I can handle it!
-The temperature is 24. I can handle it!
 The temperature is 23. I can handle it!
-The temperature is 22. I can handle it!
 The temperature is 21. I can handle it!
-The temperature is 20. I can handle it!
 The temperature is 19. I can handle it!
-The temperature is 18. I can handle it!
 The temperature is 17. I can handle it!
-The temperature is 16. I can handle it!
 The temperature is 15. I can handle it!
-The temperature is 14. I can handle it!
 The temperature is 13. I can handle it!
-The temperature is 12. I can handle it!
 The temperature is 11. I can handle it!
-The temperature is 10. I can handle it!
 The temperature is 9. I can handle it!
-The temperature is 8. I can handle it!
 The temperature is 7. I can handle it!
-The temperature is 6. I can handle it!
 The temperature is 5. I can handle it!
-The temperature is 4. I can handle it!
 The temperature is 3. I can handle it!
-The temperature is 2. I can handle it!
 The temperature is 1. I can handle it!
 */
 

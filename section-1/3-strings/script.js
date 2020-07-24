@@ -98,7 +98,7 @@ console.log(greet.indexOf('c')); //3
 //....
 // Task 11
 var sentence = "I went to park yesterday.";
-console.log(sentence.indexOf('a')); //11
+console.log(sentence.indexOf('a')); // 15
 
 //....
 // Project

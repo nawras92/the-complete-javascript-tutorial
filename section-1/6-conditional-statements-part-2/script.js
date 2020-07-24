@@ -165,43 +165,43 @@ console.log(accessDenied);
 //Task 12
 var username = "";
 if(!username){
-  console.log("Please provide your username! The username field can not be empty!")
+  console.log("Please provide us with your username! The username field can not be empty!")
 }
-//Please provide your name! The isername field can not be empty!
+//Please provide us with your name! The isername field can not be empty!
 
 
 //Task 13
 var temp = 0;
 if(!temp){
-  var boyCanGoOut = true;
+  var boyCanNotGoOut = true;
 }else{
-  var boyCanGoOut = false;
+  var boyCanNotGoOut = false;
 }
-console.log(boyCanGoOut);
+console.log(boyCanNotGoOut);
 //true
 
 //Task 14
 var password = null;
 if(!password){
-  console.log("Please provide a password");
+  console.log("Please provide us with the password");
 }
-//Please provide a password
+//Please provide us with the password
 
 //Task 15
 var username = '';
 if(!username){
-  console.log("Please provide a username");
+  console.log("Please provide us with the username");
   console.log(typeof username);
 }
 var password = null;
 if(!password){
-  console.log("Please provide a password");
+  console.log("Please provide us with the password");
   console.log(typeof password)
 }
 /*
-Please provide a username
+Please provide us with the username
 string
-Please provide a password
+Please provide us with the password
 object
 */
 
@@ -215,6 +215,6 @@ if(!mathMark){
 //Task 17
 var thresholdValue = null;
 if(!thresholdValue){
-  console.log("Please provide the threshold value");
+  console.log("Please provide us with the threshold value");
 }
-//Please provide the threshold value
+//Please provide us with the threshold value
