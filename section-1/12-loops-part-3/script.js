@@ -92,9 +92,8 @@ console.log("...........................");
 for(var num=0; num<=10; num++){
   if(num === 5){
       continue;
-  }else{
-    console.log(num*num);
   }
+  console.log(num*num);
 }
 /*
 0
@@ -116,9 +115,8 @@ console.log("...........................");
 for(var num=-50; num<=50; num=num+10){
   if(num === 0){
       continue;
-  }else{
-    console.log(num / 10);
   }
+  console.log(num / 10);
 }
 /*
 -5

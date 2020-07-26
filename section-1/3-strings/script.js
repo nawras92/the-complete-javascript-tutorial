@@ -105,6 +105,6 @@ console.log(sentence.indexOf('a')); // 15
 var customer1 = "Soso";
 var customer2 = "Sami";
 var success = "Congrats, you get 50% discount";
-var failure = "Sorry, you get nothing. You should buy for the value more than 100USD";
+var failure = "Sorry, you get nothing. You should buy for the value more than $100";
 console.log(success.toLowerCase() + " " + customer1.repeat(customer1.length));
 console.log(failure.toUpperCase() + " " + customer2.toUpperCase());

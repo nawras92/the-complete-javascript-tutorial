@@ -55,5 +55,5 @@ console.log(typeof null); //object
 
 //Task 10
 var lastname;
-var isUnknown = lastname === "sth" ? true : false;
-console.log(isUnknown); //false
+var isknown = lastname === "sth" ? true : false;
+console.log(isknown); //false

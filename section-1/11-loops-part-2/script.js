@@ -82,9 +82,8 @@ console.log("...........................");
 for(var num = 1; num<=6; num++){
     if((num + 5) > 7){
         break;
-    }else{
-        console.log(num+2);
     }
+    console.log(num+2);
 }
 /*
 3

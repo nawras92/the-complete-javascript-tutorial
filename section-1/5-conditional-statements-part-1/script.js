@@ -178,7 +178,7 @@ if(roomTemp < 20 && roomTemp >= 10){
   console.log("Well, it is a bit cold!");
 }
 if(roomTemp <10 && roomTemp >= 5){
-  console.log("Woe, it is real cold!");
+  console.log("Woe, it is really cold!");
 }
 if(roomTemp <0){
   console.log("It is extremely cold!");
