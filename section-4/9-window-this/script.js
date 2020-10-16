@@ -3,8 +3,8 @@
 // Course Link: https://js.learnwithnaw.com/
 // GitHub Repo.: https://github.com/nawras92/the-complete-javascript-tutorial
 // Section: 4
-// Lesson: 6- Structural Types Part 1
-// Last Update: 11-09-2020
+// Lesson: 9- Windows & This
+// Last Update: 1-10-2020
 // Author: Nawras Ali
 // Author YouTube Channel: https://youtube.com/c/learnwithnaw
 // */
@@ -16,13 +16,7 @@
 // /*###########*/
 // console.log("####### Task 1 #######");
 //
-// var phone = {
-//   os: "Andriod",
-//   ram: "8GB",
-//   storage: "512GB"
-// };
-//
-// console.log(`The type is: ${typeof phone}`);
+// alert("Nawras");
 //
 // console.log("..............................");
 //
@@ -31,13 +25,7 @@
 // /*###########*/
 // console.log("####### Task 2 #######");
 //
-// var phone = {
-//   os: "Andriod",
-//   ram: "8GB",
-//   storage: "512GB"
-// };
-//
-// console.log(`The constructor is: ${phone.constructor}`);
+// window.alert("Nawras")
 //
 // console.log("..............................");
 //
@@ -46,10 +34,7 @@
 // /*###########*/
 // console.log("####### Task 3 #######");
 //
-// var myObj = {};
-//
-// console.log(`The value is: ${myObj}`);
-// console.log(`The type is: ${typeof myObj}`);
+// console.log(window);
 //
 // console.log("..............................");
 //
@@ -58,10 +43,7 @@
 // /*###########*/
 // console.log("####### Task 4 #######");
 //
-// var myObj = new Object();
-//
-// console.log(`The value is: ${JSON.stringify(myObj)}`);
-// console.log(`The type is: ${typeof myObj}`);
+// console.log(typeof window);
 //
 // console.log("..............................");
 //
@@ -70,9 +52,12 @@
 // /*###########*/
 // console.log("####### Task 5 #######");
 //
-// var myObj = new Object(null);
+// var webPage = {
+//   title: "Window Object",
+//   description: "What is the window object? and what does it represent?"
+// };
 //
-// console.log(`The object is: ${JSON.stringify(myObj)}`);
+// console.log(webPage);
 //
 // console.log("..............................");
 //
@@ -81,9 +66,12 @@
 // /*###########*/
 // console.log("####### Task 6 #######");
 //
-// var myObj = new Object(undefined);
+// var webPage = {
+//   title: "Window Object",
+//   description: "What is the window object? and what does it represent?"
+// };
 //
-// console.log(`The object is: ${JSON.stringify(myObj)}`);
+// console.log(window.webPage);
 //
 // console.log("..............................");
 //
@@ -92,20 +80,12 @@
 // /*###########*/
 // console.log("####### Task 7 #######");
 //
-// /*
-// var phone = {
-//   os: "Andriod",
-//   ram: "8GB",
-//   storage: "512GB"
+// var webPage = {
+//   title: "Window Object",
+//   description: "What is the window object? and what does it represent?"
 // };
-// */
 //
-// var phone = new Object();
-// phone.os = "Andriod";
-// phone.ram = "8GB";
-// phone.storage = "512GB";
-//
-// console.log(`The object is: ${JSON.stringify(phone)}`);
+// console.log(window.hasOwnProperty("webPage"));
 //
 // console.log("..............................");
 //
@@ -114,22 +94,9 @@
 // /*###########*/
 // console.log("####### Task 8 #######");
 //
-// /*
-// var user = {
-//   firstName: "Ali",
-//   lastName: "Zaki",
-//   username: "AliZaki88",
-//   email: "alizaki@mail.com"
-// }
-// */
+// var myWord = "Only knowledge can free and save us, but with knowledge must go virtue.";
 //
-// var user = new Object();
-// user.firstName = "Ali";
-// user.lastName = "Zaki";
-// user.username = "AliZaki88";
-// user.email = "alizaki@mail.com";
-//
-// console.log(`The object is: ${JSON.stringify(user)}`);
+// console.log(myWord);
 //
 // console.log("..............................");
 //
@@ -138,18 +105,9 @@
 // /*###########*/
 // console.log("####### Task 9 #######");
 //
-// /*
-// var video = {
-//   length: "30min",
-//   host: "Nawras Ali",
-// };
-// */
+// var myWord = "Only knowledge can free and save us, but with knowledge must go virtue.";
 //
-// var video = new Object();
-// video.length = "30min";
-// video.host = "Nawras Ali";
-//
-// console.log(`The object is: ${JSON.stringify(video)}`);
+// console.log(window.myWord);
 //
 // console.log("..............................");
 //
@@ -158,12 +116,9 @@
 // /*###########*/
 // console.log("####### Task 10 #######");
 //
-// var phone = new Object();
-// phone.os = "Andriod";
-// phone.ram = "8GB";
-// phone.storage = "512GB";
+// var myWord = "Only knowledge can free and save us, but with knowledge must go virtue.";
 //
-// console.log(`Is phone an instance of Object? ${phone instanceof Object}`);
+// console.log(window.hasOwnProperty("myWord"));
 //
 // console.log("..............................");
 //
@@ -172,13 +127,9 @@
 // /*###########*/
 // console.log("####### Task 11 #######");
 //
-// var user = new Object();
-// user.firstName = "Ali";
-// user.lastName = "Zaki";
-// user.username = "AliZaki88";
-// user.email = "alizaki@mail.com";
+// var returnsTrue = () => true;
 //
-// console.log(`Is user an instance of Object? ${user instanceof Object}`);
+// console.log(returnsTrue());
 //
 // console.log("..............................");
 //
@@ -187,11 +138,9 @@
 // /*###########*/
 // console.log("####### Task 12 #######");
 //
-// var video = new Object();
-// video.length = "30min";
-// video.host = "Nawras Ali";
+// var returnsTrue = () => true;
 //
-// console.log(`Is video an instance of Object? ${video instanceof Object}`);
+// console.log(window.returnsTrue());
 //
 // console.log("..............................");
 //
@@ -200,9 +149,9 @@
 // /*###########*/
 // console.log("####### Task 13 #######");
 //
-// var numbers = [10, 11, 12, 13];
+// var returnsTrue = () => true;
 //
-// console.log(`The value is: ${numbers}`);
+// console.log(window.hasOwnProperty("returnsTrue"));
 //
 // console.log("..............................");
 //
@@ -211,9 +160,12 @@
 // /*###########*/
 // console.log("####### Task 14 #######");
 //
-// var numbers = [10, 11, 12, 13];
+// var webPage = {
+//   title: "Window Object",
+//   description: "What is the window object? and what does it represent?"
+// };
 //
-// console.log(`The type is: ${typeof numbers}`);
+// console.log(this.webPage);
 //
 // console.log("..............................");
 //
@@ -222,9 +174,9 @@
 // /*###########*/
 // console.log("####### Task 15 #######");
 //
-// var numbers = [10, 11, 12, 13];
+// var myWord = "Only knowledge can free and save us, but with knowledge must go virtue.";
 //
-// console.log(`The constructor is: ${numbers.constructor}`);
+// console.log(this.myWord);
 //
 // console.log("..............................");
 //
@@ -233,9 +185,9 @@
 // /*###########*/
 // console.log("####### Task 16 #######");
 //
-// var numbers = new Array(10, 11, 12, 13);
+// var returnsTrue = () => true;
 //
-// console.log(`The value is: ${numbers}`);
+// console.log(this.returnsTrue());
 //
 // console.log("..............................");
 //
@@ -244,13 +196,7 @@
 // /*###########*/
 // console.log("####### Task 17 #######");
 //
-// /*
-// var colors = ["red", "black", "green", "white"];
-// */
-//
-// var colors = new Array("red", "black", "green", "white");
-//
-// console.log(`The value is: ${colors}`);
+// console.log(window === this);
 //
 // console.log("..............................");
 //
@@ -259,13 +205,11 @@
 // /*###########*/
 // console.log("####### Task 18 #######");
 //
-// /*
-// var users = ["user1", "user2", "user3"];
-// */
+// function returnsThis(){
+//   return this;
+// }
 //
-// var users = new Array("user1", "user2", "user3");
-//
-// console.log(`The value is: ${users}`);
+// console.log(returnsThis());
 //
 // console.log("..............................");
 //
@@ -274,11 +218,14 @@
 // /*###########*/
 // console.log("####### Task 19 #######");
 //
-// function displayHello(){
-//   console.log("Hello");
+// var a = "I'm in the global scope";
+//
+// function returnsA(){
+//   var a = "I'm in the local scope";
+//   return this.a;
 // }
 //
-// displayHello();
+// console.log(returnsA());
 //
 // console.log("..............................");
 //
@@ -287,11 +234,14 @@
 // /*###########*/
 // console.log("####### Task 20 #######");
 //
-// function displayHello(){
-//   console.log("Hello");
-// }
+// var laptop = {
+//   processor: "i5",
+//   ram: 2,
+//   storage: "0.5TB",
+//   additionalRAM : 4
+// };
 //
-// console.log(`The type is: ${typeof displayHello}`);
+// console.log(laptop);
 //
 // console.log("..............................");
 //
@@ -300,11 +250,15 @@
 // /*###########*/
 // console.log("####### Task 21 #######");
 //
-// function displayHello(){
-//   console.log("Hello");
-// }
+// var laptop = {
+//   processor: "i5",
+//   ram: 2,
+//   storage: "0.5TB",
+//   additionalRAM : 4,
+//   totalRAM: ram + additionalRAM
+// };
 //
-// console.log(`Is function instance of Object? ${displayHello instanceof Object}`);
+// console.log(laptop);
 //
 // console.log("..............................");
 //
@@ -313,11 +267,15 @@
 // /*###########*/
 // console.log("####### Task 22 #######");
 //
-// function displayHello(){
-//   console.log("Hello");
-// }
+// var laptop = {
+//   processor: "i5",
+//   ram: 2,
+//   storage: "0.5TB",
+//   additionalRAM : 4,
+//   totalRAM: this.ram + this.additionalRAM
+// };
 //
-// console.log(`The constructor is: ${displayHello.constructor}`);
+// console.log(laptop.totalRAM);
 //
 // console.log("..............................");
 //
@@ -326,9 +284,17 @@
 // /*###########*/
 // console.log("####### Task 23 #######");
 //
-// var displayHello  = new Function('', 'console.log("Hello")');
+// var laptop = {
+//   processor: "i5",
+//   ram: 2,
+//   storage: "0.5TB",
+//   additionalRAM : 4,
+//   totalRAM: function(){
+//     return this.ram + this.additionalRAM;
+//   }
+// };
 //
-// displayHello();
+// console.log(laptop.totalRAM());
 //
 // console.log("..............................");
 //
@@ -337,31 +303,16 @@
 // /*###########*/
 // console.log("####### Task 24 #######");
 //
-// /*
-// var mul = function(num1, num2){
-//   return num1 * num2;
+// var laptop = {
+//   processor: "i5",
+//   ram: 2,
+//   storage: "0.5TB",
+//   additionalRAM : 4,
+//   totalRAM: function(){
+//     return this;
+//   }
 // };
-// */
 //
-// var mul = new Function("num1", "num2", "return num1 * num2");
-//
-// console.log(mul(5, 10));
-//
-// console.log("..............................");
-//
-// /*###########*/
-//   //Task 25//
-// /*###########*/
-// console.log("####### Task 25 #######");
-//
-// /*
-// var boolValue = function(val){
-//   return !!val;
-// };
-// */
-//
-// var boolValue = new Function("val", "return !!val");
-//
-// console.log(boolValue(undefined));
+// console.log(laptop.totalRAM());
 //
 // console.log("..............................");

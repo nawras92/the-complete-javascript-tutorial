@@ -3,8 +3,8 @@
 // Course Link: https://js.learnwithnaw.com/
 // GitHub Repo.: https://github.com/nawras92/the-complete-javascript-tutorial
 // Section: 4
-// Lesson: 6- Structural Types Part 1
-// Last Update: 11-09-2020
+// Lesson: 12- Prototypes Part 1
+// Last Update: 3-10-2020
 // Author: Nawras Ali
 // Author YouTube Channel: https://youtube.com/c/learnwithnaw
 // */
@@ -16,13 +16,23 @@
 // /*###########*/
 // console.log("####### Task 1 #######");
 //
+// /*
 // var phone = {
-//   os: "Andriod",
-//   ram: "8GB",
-//   storage: "512GB"
+//   os: null,
+//   ram: null,
+//   storage: null
 // };
+// */
 //
-// console.log(`The type is: ${typeof phone}`);
+// function Phone(os, ram, stg){
+//   this.os = os;
+//   this.ram = ram;
+//   this.storage = stg;
+// }
+//
+// var phone1 = new Phone("Android", "2GB", "36GB");
+//
+// console.log(phone1);
 //
 // console.log("..............................");
 //
@@ -31,13 +41,15 @@
 // /*###########*/
 // console.log("####### Task 2 #######");
 //
-// var phone = {
-//   os: "Andriod",
-//   ram: "8GB",
-//   storage: "512GB"
-// };
+// function Phone(os, ram, stg){
+//   this.os = os;
+//   this.ram = ram;
+//   this.storage = stg;
+// }
 //
-// console.log(`The constructor is: ${phone.constructor}`);
+// var phone1 = new Phone("Android", "2GB", "36GB");
+//
+// console.log(typeof Phone);
 //
 // console.log("..............................");
 //
@@ -46,10 +58,15 @@
 // /*###########*/
 // console.log("####### Task 3 #######");
 //
-// var myObj = {};
+// function Phone(os, ram, stg){
+//   this.os = os;
+//   this.ram = ram;
+//   this.storage = stg;
+// }
 //
-// console.log(`The value is: ${myObj}`);
-// console.log(`The type is: ${typeof myObj}`);
+// var phone1 = new Phone("Android", "2GB", "36GB");
+//
+// console.log(Phone instanceof Object);
 //
 // console.log("..............................");
 //
@@ -58,10 +75,15 @@
 // /*###########*/
 // console.log("####### Task 4 #######");
 //
-// var myObj = new Object();
+// function Phone(os, ram, stg){
+//   this.os = os;
+//   this.ram = ram;
+//   this.storage = stg;
+// }
 //
-// console.log(`The value is: ${JSON.stringify(myObj)}`);
-// console.log(`The type is: ${typeof myObj}`);
+// var phone1 = new Phone("Android", "2GB", "36GB");
+//
+// console.log(Phone.prototype);
 //
 // console.log("..............................");
 //
@@ -70,9 +92,15 @@
 // /*###########*/
 // console.log("####### Task 5 #######");
 //
-// var myObj = new Object(null);
+// function Phone(os, ram, stg){
+//   this.os = os;
+//   this.ram = ram;
+//   this.storage = stg;
+// }
 //
-// console.log(`The object is: ${JSON.stringify(myObj)}`);
+// var phone1 = new Phone("Android", "2GB", "36GB");
+//
+// console.log(typeof Phone.prototype);
 //
 // console.log("..............................");
 //
@@ -81,9 +109,15 @@
 // /*###########*/
 // console.log("####### Task 6 #######");
 //
-// var myObj = new Object(undefined);
+// function Phone(os, ram, stg){
+//   this.os = os;
+//   this.ram = ram;
+//   this.storage = stg;
+// }
 //
-// console.log(`The object is: ${JSON.stringify(myObj)}`);
+// var phone1 = new Phone("Android", "2GB", "36GB");
+//
+// console.log(Phone.prototype.constructor);
 //
 // console.log("..............................");
 //
@@ -92,20 +126,7 @@
 // /*###########*/
 // console.log("####### Task 7 #######");
 //
-// /*
-// var phone = {
-//   os: "Andriod",
-//   ram: "8GB",
-//   storage: "512GB"
-// };
-// */
-//
-// var phone = new Object();
-// phone.os = "Andriod";
-// phone.ram = "8GB";
-// phone.storage = "512GB";
-//
-// console.log(`The object is: ${JSON.stringify(phone)}`);
+// console.log(Set.prototype);
 //
 // console.log("..............................");
 //
@@ -114,23 +135,7 @@
 // /*###########*/
 // console.log("####### Task 8 #######");
 //
-// /*
-// var user = {
-//   firstName: "Ali",
-//   lastName: "Zaki",
-//   username: "AliZaki88",
-//   email: "alizaki@mail.com"
-// }
-// */
-//
-// var user = new Object();
-// user.firstName = "Ali";
-// user.lastName = "Zaki";
-// user.username = "AliZaki88";
-// user.email = "alizaki@mail.com";
-//
-// console.log(`The object is: ${JSON.stringify(user)}`);
-//
+// console.log(typeof Set.prototype);
 // console.log("..............................");
 //
 // /*###########*/
@@ -138,19 +143,7 @@
 // /*###########*/
 // console.log("####### Task 9 #######");
 //
-// /*
-// var video = {
-//   length: "30min",
-//   host: "Nawras Ali",
-// };
-// */
-//
-// var video = new Object();
-// video.length = "30min";
-// video.host = "Nawras Ali";
-//
-// console.log(`The object is: ${JSON.stringify(video)}`);
-//
+// console.log(Set.prototype.add);
 // console.log("..............................");
 //
 // /*###########*/
@@ -158,13 +151,9 @@
 // /*###########*/
 // console.log("####### Task 10 #######");
 //
-// var phone = new Object();
-// phone.os = "Andriod";
-// phone.ram = "8GB";
-// phone.storage = "512GB";
+// var set1 = new Set();
 //
-// console.log(`Is phone an instance of Object? ${phone instanceof Object}`);
-//
+// console.log(set1);
 // console.log("..............................");
 //
 // /*###########*/
@@ -172,14 +161,11 @@
 // /*###########*/
 // console.log("####### Task 11 #######");
 //
-// var user = new Object();
-// user.firstName = "Ali";
-// user.lastName = "Zaki";
-// user.username = "AliZaki88";
-// user.email = "alizaki@mail.com";
+// var set1 = new Set();
 //
-// console.log(`Is user an instance of Object? ${user instanceof Object}`);
+// set1.add(5);
 //
+// console.log(set1);
 // console.log("..............................");
 //
 // /*###########*/
@@ -187,11 +173,12 @@
 // /*###########*/
 // console.log("####### Task 12 #######");
 //
-// var video = new Object();
-// video.length = "30min";
-// video.host = "Nawras Ali";
+// var set1 = new Set();
 //
-// console.log(`Is video an instance of Object? ${video instanceof Object}`);
+// set1.add(5);
+// set1.add(8);
+//
+// console.log(set1);
 //
 // console.log("..............................");
 //
@@ -200,9 +187,13 @@
 // /*###########*/
 // console.log("####### Task 13 #######");
 //
-// var numbers = [10, 11, 12, 13];
+// var set1 = new Set();
 //
-// console.log(`The value is: ${numbers}`);
+// set1.add(5);
+// set1.add(8);
+// set1.add(5);
+//
+// console.log(set1);
 //
 // console.log("..............................");
 //
@@ -211,9 +202,7 @@
 // /*###########*/
 // console.log("####### Task 14 #######");
 //
-// var numbers = [10, 11, 12, 13];
-//
-// console.log(`The type is: ${typeof numbers}`);
+// console.log(Set.prototype.delete);
 //
 // console.log("..............................");
 //
@@ -222,9 +211,14 @@
 // /*###########*/
 // console.log("####### Task 15 #######");
 //
-// var numbers = [10, 11, 12, 13];
+// var set1 = new Set();
 //
-// console.log(`The constructor is: ${numbers.constructor}`);
+// set1.add(5);
+// set1.add(8);
+// set1.add(5);
+// set1.delete(8)
+//
+// console.log(set1);
 //
 // console.log("..............................");
 //
@@ -233,9 +227,7 @@
 // /*###########*/
 // console.log("####### Task 16 #######");
 //
-// var numbers = new Array(10, 11, 12, 13);
-//
-// console.log(`The value is: ${numbers}`);
+// console.log(Set.prototype.clear);
 //
 // console.log("..............................");
 //
@@ -244,13 +236,15 @@
 // /*###########*/
 // console.log("####### Task 17 #######");
 //
-// /*
-// var colors = ["red", "black", "green", "white"];
-// */
+// var set1 = new Set();
 //
-// var colors = new Array("red", "black", "green", "white");
+// set1.add(5);
+// set1.add(8);
+// set1.add(5);
+// set1.delete(8)
+// set1.clear()
 //
-// console.log(`The value is: ${colors}`);
+// console.log(set1);
 //
 // console.log("..............................");
 //
@@ -259,13 +253,8 @@
 // /*###########*/
 // console.log("####### Task 18 #######");
 //
-// /*
-// var users = ["user1", "user2", "user3"];
-// */
-//
-// var users = new Array("user1", "user2", "user3");
-//
-// console.log(`The value is: ${users}`);
+// console.log(`The type of Set constructor: ${typeof Set}`);
+// console.log(`Is Set constructor an instance of Object constructor: ${Set instanceof Object}`);
 //
 // console.log("..............................");
 //
@@ -274,11 +263,8 @@
 // /*###########*/
 // console.log("####### Task 19 #######");
 //
-// function displayHello(){
-//   console.log("Hello");
-// }
-//
-// displayHello();
+// console.log(`The type of Set.prototype: ${typeof Set.prototype}`);
+// console.log(`Is Set.prototype an instance of Object constructor: ${Set.prototype instanceof Object}`);
 //
 // console.log("..............................");
 //
@@ -287,11 +273,8 @@
 // /*###########*/
 // console.log("####### Task 20 #######");
 //
-// function displayHello(){
-//   console.log("Hello");
-// }
+// console.log(Object.prototype);
 //
-// console.log(`The type is: ${typeof displayHello}`);
 //
 // console.log("..............................");
 //
@@ -300,11 +283,7 @@
 // /*###########*/
 // console.log("####### Task 21 #######");
 //
-// function displayHello(){
-//   console.log("Hello");
-// }
-//
-// console.log(`Is function instance of Object? ${displayHello instanceof Object}`);
+// console.log(Set.prototype.__proto__);
 //
 // console.log("..............................");
 //
@@ -313,11 +292,7 @@
 // /*###########*/
 // console.log("####### Task 22 #######");
 //
-// function displayHello(){
-//   console.log("Hello");
-// }
-//
-// console.log(`The constructor is: ${displayHello.constructor}`);
+// console.log(Set.prototype.__proto__ === Object.prototype);
 //
 // console.log("..............................");
 //
@@ -326,9 +301,7 @@
 // /*###########*/
 // console.log("####### Task 23 #######");
 //
-// var displayHello  = new Function('', 'console.log("Hello")');
-//
-// displayHello();
+// console.log(typeof Object.prototype);
 //
 // console.log("..............................");
 //
@@ -337,31 +310,6 @@
 // /*###########*/
 // console.log("####### Task 24 #######");
 //
-// /*
-// var mul = function(num1, num2){
-//   return num1 * num2;
-// };
-// */
-//
-// var mul = new Function("num1", "num2", "return num1 * num2");
-//
-// console.log(mul(5, 10));
-//
-// console.log("..............................");
-//
-// /*###########*/
-//   //Task 25//
-// /*###########*/
-// console.log("####### Task 25 #######");
-//
-// /*
-// var boolValue = function(val){
-//   return !!val;
-// };
-// */
-//
-// var boolValue = new Function("val", "return !!val");
-//
-// console.log(boolValue(undefined));
+// console.log(Object.prototype.__proto__);
 //
 // console.log("..............................");

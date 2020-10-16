@@ -2,7 +2,7 @@
 // Course: The complete JavaScript Tutorial
 // Course Link: https://js.learnwithnaw.com/
 // GitHub Repo.: https://github.com/nawras92/the-complete-javascript-tutorial
-// Section: 5
+// Section: 4
 // Lesson: 5- Data Types Part 2
 // Last Update: 11-09-2020
 // Author: Nawras Ali
