@@ -43,6 +43,20 @@ In section 4, you will learn about objects as follows:
 2. Display Objects
 3. Data Types
 4. Structural Types
+5. Window & This
+6. Custom Constructors
+7. Prototypes
+8. Shallow & Deep Copy
+
+## More on Functions
+In section 5, you will learn about functions and objects as follows:
+1. Call()
+2. Apply()
+3. Bind()
+4. Arguments
+5. Const Keyword
+6. Let Keyword
+7. Variable Declaration
 
 
 
