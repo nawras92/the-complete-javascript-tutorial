@@ -175,7 +175,7 @@
 // console.log("####### Task 12 #######");
 //
 // function doSomething(task1, task2, task3){
-//   return {t1: task1, t2: task1, t3: task3};
+//   return {t1: task1, t2: task2, t3: task3};
 // }
 //
 // var {t1, t2, t3} = doSomething("Meditate", "Be grateful", "Study JS");
@@ -243,7 +243,6 @@
 //   return {processor: p, ram: r, storage: s}
 // }
 //
-// var processor, rest;
 // var {processor, ...rest} = getMeALaptop("i7", "8GB", "2TB");
 // console.log(processor, rest);
 //
@@ -264,7 +263,6 @@
 //   }
 // }
 //
-// var host, other;
 // var {host, ...other} = getMeAVideo("30min", "Nawras", "Education", "JS rest operator", "Arabic");
 // console.log(host, other);
 //
@@ -284,7 +282,6 @@
 //   }
 // };
 //
-// var username, email, other;
 // var {username, email, ...other} = userInfo("Ola", "Rasi", "OlaRasi89", "olaRasi@gmail.com" );
 // console.log(username, email, other);
 //
