@@ -58,6 +58,16 @@ In section 5, you will learn about functions and objects as follows:
 6. Let Keyword
 7. Variable Declaration
 
+## Classes
+
+In section 6, you will learn about classes as follows:
+
+1. Classes
+2. Getters & Methods
+3. Setters
+4. Static methods and properties
+5. Inheritance
+6. The super Keyword
 
 
 Note: I will be adding new sections on weekly basis.
