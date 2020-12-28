@@ -69,5 +69,15 @@ In section 6, you will learn about classes as follows:
 5. Inheritance
 6. The super Keyword
 
+## DOM
+
+In section 7, you will learn about DOM as follows:
+
+1. Introduction to DOM
+2. Getting Elements
+3. DOM Nodes
+4. Creating Elements
+5. Styling Elements
+6. Events
 
 Note: I will be adding new sections on weekly basis.

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>The website</title>
+    <style>
+       section{
+         margin: 2rem 0;
+         padding: 2rem 0;
+         border-bottom: 0.3rem solid CadetBlue;
+       }
+       #container{
+         display: flex;
+         justify-content: center;
+       }
+       .box{
+         width: 10rem;
+         height: 10rem;
+         margin: 1rem;
+       }
+       #box-1{
+         background: lightblue;
+       }
+       #box-2{
+         background: Olive;
+       }
+       #box-3{
+         background: tomato;
+       }
+       #form{
+
+       }
+       #form input, #colorSelect{
+         display: block;
+         margin: 1rem 0;
+         width: 20rem;
+         height: 2rem;
+         border: none;
+         outline: none;
+         border-bottom: 0.1rem solid tomato;
+         font-size: 1.5rem;
+       }
+       input[type="submit"]{
+         background: tomato;
+         color: #fff;
+       }
+       input[type="submit"]:hover{
+         opacity: 0.8;
+         cursor: pointer;
+       }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to our website</h1>
+    </header>
+    <section id="container">
+      <div class="box" id="box-1"></div>
+      <div class="box" id="box-2"></div>
+      <div class="box" id="box-3"></div>
+    </section>
+    <section id="formSection">
+      <form id="form">
+        <input type="text" id="yourName" placeholder="Your Name">
+        <input type="number" id="age" placeholder="35">
+        <select name="selectMenu" id="colorSelect">
+          <option value="DarkSlateGray">DarkSlateGray</option>
+          <option value="SaddleBrown">SaddleBrown</option>
+          <option value="Yellow">Yellow</option>
+          <option value="CadetBlue">CadetBlue</option>
+          <option value="Chocolate">Chocolate</option>
+          <option value="CornflowerBlue">CornflowerBlue</option>
+          <option value="Gainsboro">Gainsboro</option>
+          <option value="LemonChiffon">LemonChiffon</option>
+          <option value="SteelBlue">SteelBlue</option>
+          <option value="Snow">Snow</option>
+          <option value="SpringGreen">SpringGreen</option>
+        </select>
+        <input type="submit" value="Send">
+      </form>
+    </section>
+    <section id="answers">
+      <h2>Your answers will be shown here:</h2>
+      <p id="yourName"></p>
+      <p id="yourAge"></p>
+      <p id="yourColor"></p>
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>
