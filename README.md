@@ -80,4 +80,45 @@ In section 7, you will learn about DOM as follows:
 5. Styling Elements
 6. Events
 
+## NodeJs
+
+1. Introduction
+2. NPM
+3. http Module
+4. path Module
+5. fs Module
+5. Node.js Streams
+
+## Advanced Topics
+
+1. Promises
+2. async/await
+3. Fetch
+
+## React
+
+1. Create Components
+2. Props
+3. useState Hook
+4. useEffect Hook
+5. React-router-dom
+6. React Deployment
+
+## Material UI/React
+
+1. Introduction to the basic components
+2. Create a complete blog project.
+3. Forms
+
+## Express
+
+1. Introduction to Express
+2. Get/Post/delete/patch requests
+3. Create Blog API
+4. MVC model
+5. Express Router
+6. Validation
+
+
+
 Note: I will be adding new sections on weekly basis.
