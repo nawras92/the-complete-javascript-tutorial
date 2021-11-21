@@ -1,0 +1,101 @@
+/* container styling */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* header styling */
+.header {
+  background: blue;
+  color: white;
+  padding: 1rem;
+}
+
+.header-text,
+.header-heading {
+  display: inline;
+  padding: 0.2rem;
+}
+
+.header-text {
+  font-size: 0.8rem;
+}
+
+.header-heading {
+  font-size: 1.2rem;
+}
+
+.header-nav {
+  margin: 0.5rem;
+  display: flex;
+}
+
+.header-nav-item {
+  list-style: none;
+  padding: 0.2rem;
+}
+
+/* Footer styling */
+.footer {
+  background: #ccc;
+}
+
+.footer-text {
+  padding: 0.1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* main styling */
+.main {
+  flex: 1;
+  width: 90%;
+  background: #f5f5f5;
+  margin: 1rem auto;
+  padding: 1rem;
+}
+
+/* notifcation */
+.notifcation {
+  background: #e55;
+  padding: 1rem;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* button */
+
+.button {
+  border: none;
+  outline: none;
+  background: #555;
+  color: #fff;
+  padding: 0.2rem;
+  margin: 0.2rem;
+}
+
+.button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+/* posts container */
+
+.posts {
+  margin: 1rem;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.post {
+  background: #ccc;
+  padding: 1rem;
+  margin: 0.5rem;
+}
+
+.post-title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
