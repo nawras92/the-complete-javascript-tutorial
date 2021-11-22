@@ -8,6 +8,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import Sidebar from "../../parts/Sidebar";
 import Post from "../../components/post/Post";
+import requests from "../../api/posts/requests";
 
 const useStyles = makeStyles({
   root: {
@@ -40,14 +41,13 @@ const SinglePost = (props) => {
   const [post, setPost] = useState(undefined);
 
   useEffect(() => {
-    const URL = `https://jsonplaceholder.typicode.com/posts/${id}`;
-    const fetchPost = async () => {
-      const response = await fetch(URL);
-      const post = await response.json();
+    const fetchPost = async (id) => {
+      const data = await requests.getOne(id);
+      const { post } = data;
       setPost(post);
     };
-    setTimeout(fetchPost, 100);
-  }, []);
+    fetchPost(id);
+  }, [id]);
   return (
     <>
       <Grid
