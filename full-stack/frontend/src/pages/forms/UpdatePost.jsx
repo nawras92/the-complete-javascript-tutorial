@@ -4,19 +4,19 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import UpdatePostForm from "../../components/forms/UpdatePost";
+import requests from "../../api/posts/requests";
 
 const UpdatePost = () => {
   const { id } = useParams();
   const [post, setPost] = useState(undefined);
 
   useEffect(() => {
-    const URL = `https://jsonplaceholder.typicode.com/posts/${id}`;
-    const fetchPost = async () => {
-      const response = await fetch(URL);
-      const post = await response.json();
-      setPost(post);
+    const fetchPost = async (id) => {
+      const data = await requests.getOne(id);
+      const { post: fetchedPost } = data;
+      setPost(fetchedPost);
     };
-    fetchPost();
+    fetchPost(id);
   }, [id]);
   return (
     <Paper sx={{ maxWidth: "80%", mx: "auto", p: 2 }}>

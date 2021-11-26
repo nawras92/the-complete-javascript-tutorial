@@ -13,36 +13,30 @@ const rules = {
     }
   },
   title: (req, res, next) => {
-    const title = req.body.title ? req.body.title.trim() : undefined;
-    if (title) {
-      if (title.length < 7 || title.length > 70) {
+    if (req.body.title) {
+      if (req.body.title.length < 7 || req.body.title.length > 70) {
         next({
           name: "Validation Error",
           element: "body: title",
           message: "The title length should be between 7 and 70 chars",
         });
       }
-      req.body.title = title;
-      next();
-    } else {
       next();
     }
+    next();
   },
   body: (req, res, next) => {
-    const body = req.body.body ? req.body.body.trim() : undefined;
-    if (body) {
-      if (body.length < 7 || body.length > 2000) {
+    if (req.body.body) {
+      if (req.body.body.length < 7 || req.body.body.length > 2000) {
         next({
           name: "Validation Error",
           element: "body: body",
           message: "The post body length should be between 7 and 2000 chars",
         });
       }
-      req.body.body = body;
-      next();
-    } else {
       next();
     }
+    next();
   },
   titleRequired: (req, res, next) => {
     if (req.body.title) {

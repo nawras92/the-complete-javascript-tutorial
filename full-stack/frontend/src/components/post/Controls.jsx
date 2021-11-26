@@ -50,11 +50,12 @@ const Controls = (props) => {
             >
               <EditIcon fontSize="small" />
             </IconButton>
-            <IconButton color="error" size="small">
-              <DeleteIcon
-                fontSize="small"
-                onClick={() => setDialogOpen(true)}
-              />
+            <IconButton
+              color="error"
+              size="small"
+              onClick={() => setDialogOpen(true)}
+            >
+              <DeleteIcon fontSize="small" />
             </IconButton>
           </Collapse>
         </Grid>

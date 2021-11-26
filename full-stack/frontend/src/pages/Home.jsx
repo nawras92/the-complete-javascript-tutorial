@@ -81,9 +81,9 @@ const Home = (props) => {
             </Typography>
           </Grid>
           {posts && posts.length > 0 ? (
-            posts.map((post) => {
+            posts.map((post, index) => {
               return (
-                <Grid item md={6}>
+                <Grid item md={6} key={index}>
                   <Post
                     snippet
                     id={post.id}
