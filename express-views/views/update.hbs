@@ -1,0 +1,20 @@
+{{#if post}}
+  <form class="mx-auto my-4" style="max-width: 80%;" method="post" onsubmit="return updatePost(this, {{post.id}})">
+  <div class="alert alert-success" name="ok" style="display: none;"></div>
+  <div class="alert alert-danger" name="ko" style="display:none;"></div>
+  <div class="mb-3">
+    <label for="post-title" class="form-label">Post Title</label>
+    <input type="text" class="form-control" id="post-title" name="post-title" value="{{ post.title }}"/>
+    <div id="titleHelp" class="form-text">The post title must be between 7 to 30 chars
+      chars</div>
+  </div>
+  <div class="mb-3">
+    <label for="post-body" class="form-label">Post Body</label>
+    <textarea rows="8" class="form-control" id="post-body" name="post-body">
+      {{ post.body }}
+    </textarea>
+    <div id="bodyHelp" class="form-text">The post body must be between 7 to 2000 chars
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{{/if}}
