@@ -1,0 +1,20 @@
+{{#if post}}
+  <div class="card my-2">
+    <div class="card-body">
+      <h5 class="card-title">
+        {{post.title}}
+      </h5>
+      <p class="card-text">{{post.body}}</p>
+      <a href="#" type="button" class="btn btn-info">Edit</a>
+      <a
+        href="#"
+        type="button"
+        class="btn btn-danger"
+        data-bs-toggle="modal"
+        data-bs-target="#deletePost"
+      >Delete</a>
+    </div>
+
+  </div>
+  {{> modal id=post.id }}
+{{/if}}

@@ -1,0 +1,23 @@
+<div class="container mx-auto my-4">
+  <h1>All posts</h1>
+
+  {{#if posts}}
+
+    {{#each posts as |post|}}
+
+      <div class="card my-2">
+        <div class="card-body">
+          <h5 class="card-title">
+            <a href="/view/{{post.id}}">
+              {{post.title}}
+            </a>
+
+          </h5>
+          <p class="card-text">{{post.body}}</p>
+        </div>
+      </div>
+    {{/each}}
+
+  {{/if}}
+
+</div>
