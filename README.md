@@ -119,6 +119,14 @@ In section 7, you will learn about DOM as follows:
 5. Express Router
 6. Validation
 
+## MongoDB/Mongoose
+
+1. Introduction to MongoDB
+2. Explain MongoDB CURD commands
+3. Use MongoDB Compass & Shell
+4. Connect the application with Mongoose
+5. Explain Mongoose CURD queries
+
 
 
 Note: I will be adding new sections on weekly basis.
