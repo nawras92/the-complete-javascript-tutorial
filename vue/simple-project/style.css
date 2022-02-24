@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h3,
+p {
+  margin-bottom: 1rem;
+}
+.header {
+  background: #333;
+  color: #fff;
+  padding: 1rem;
+  margin: 0;
+  text-align: center;
+}
