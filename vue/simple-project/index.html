@@ -10,7 +10,10 @@
       <h1 class="header-heading">{{ title }}</h1>
       <p class="header-desc">{{ desc }}</p>
     </header>
-    {{ title }}
+    <section class="section" v-for="section in sections">
+      <h3 class="section-heading">{{section.title}}</h3>
+      <p class="section-text">{{section.desc}}</p>
+    </section>
     <script src="https://unpkg.com/vue@3"></script>
     <script src="script.js"></script>
   </body>
