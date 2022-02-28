@@ -21,3 +21,14 @@ p {
   margin: 1rem;
   border-bottom: 1px solid #000;
 }
+
+.section-link {
+  text-decoration: none;
+  background: lightblue;
+  color: #000;
+  padding: 0.2rem;
+}
+
+.section-link:hover {
+  padding: 0.4rem;
+}

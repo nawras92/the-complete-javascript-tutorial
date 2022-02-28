@@ -26,6 +26,10 @@ const app = Vue.createApp({
       title: 'my beautiful project 2 ',
       desc: 'this is my first vue projecttttttttttttttt',
       sections,
+      link: {
+        name: 'yes, take me there 2',
+        url: 'https://yandex.com',
+      },
     };
   },
 });
