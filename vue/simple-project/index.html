@@ -9,15 +9,20 @@
     <header id="myid" class="header">
       <h1 class="header-heading">{{ title }}</h1>
       <p class="header-desc">{{ desc }}</p>
+      <button @Click="isDark =! isDark">{{ isDark ? "light" : "dark" }}</button>
     </header>
-    <section class="section" v-for="section in sections">
-      <h3 class="section-heading">{{section.title}}</h3>
-      <p class="section-text">{{section.desc}}</p>
-    </section>
-    <section class="section">
-      <h3 class="section-heading">Do you like it?</h3>
-      <a class="section-link" :href="link.url" target="_blank">{{link.name}}</a>
-    </section>
+    <main :class="{dark: isDark}">
+      <section class="section" v-for="section in sections">
+        <h3 class="section-heading">{{section.title}}</h3>
+        <p class="section-text">{{section.desc}}</p>
+      </section>
+      <section class="section">
+        <h3 class="section-heading">Do you like it?</h3>
+        <a class="section-link" :href="link.url" target="_blank"
+          >{{link.name}}</a
+        >
+      </section>
+    </main>
 
     <script src="https://unpkg.com/vue@3"></script>
     <script src="script.js"></script>

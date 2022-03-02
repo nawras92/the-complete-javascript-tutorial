@@ -30,6 +30,7 @@ const app = Vue.createApp({
         name: 'yes, take me there 2',
         url: 'https://yandex.com',
       },
+      isDark: false,
     };
   },
 });
