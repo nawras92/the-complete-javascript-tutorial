@@ -6,16 +6,22 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header id="myid" class="header">
-      <h1 class="header-heading">{{ title }}</h1>
-      <p class="header-desc">{{ desc }}</p>
-      <button @Click="isDark =! isDark">{{ isDark ? "light" : "dark" }}</button>
-    </header>
+    <page-header :title="title" :desc="desc"></page-header>
     <main :class="{dark: isDark}">
-      <section class="section" v-for="section in sections">
-        <h3 class="section-heading">{{section.title}}</h3>
-        <p class="section-text">{{section.desc}}</p>
+      <button @Click="switchMode">{{ isDark ? "light" : "dark" }}</button>
+      <page-section title="this is title" desc="this is desc"></page-section>
+      <section class="section">
+        <h3 class="section-heading">The count is {{count}}</h3>
+        <a class="section-link" @click="incCount">Increase</a>
+        <a class="section-link" @click="decCount">Decrease</a>
       </section>
+      <page-section
+        v-for="section in sections"
+        :title="section.title"
+        :desc="section.desc"
+        :key="section.id"
+      >
+      </page-section>
       <section class="section">
         <h3 class="section-heading">Do you like it?</h3>
         <a class="section-link" :href="link.url" target="_blank"

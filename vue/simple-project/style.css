@@ -33,6 +33,7 @@ p {
   background: lightblue;
   color: #000;
   padding: 0.2rem;
+  margin: 0 1rem;
 }
 
 .section-link:hover {
