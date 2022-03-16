@@ -10,11 +10,22 @@
 <script>
 import PageHeader from './components/PageHeader.vue';
 import PageForm from './components/PageForm.vue';
+import quotes from '../data.json';
 export default {
   name: 'App',
   components: {
     PageHeader,
     PageForm,
+  },
+  provide() {
+    return {
+      quotes: this.quotes,
+    };
+  },
+  data() {
+    return {
+      quotes,
+    };
   },
 };
 </script>

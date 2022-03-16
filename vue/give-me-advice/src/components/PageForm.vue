@@ -21,19 +21,20 @@ export default {
   components: {
     FormResult,
   },
+  inject: ['quotes'],
 
   data() {
     return {
       userNumber: 5,
       userColor: '#000000',
-      quotes: ['quote 1', 'quote 2', 'quote 3 ', 'quote 4'],
     };
   },
   computed: {
     getAdvice() {
       const advice = this.quotes.find((q, i) => i === this.userNumber);
+
       if (!advice) return 'unlucky enough, no advice for you';
-      return advice;
+      return advice.quoteText;
     },
   },
 };
