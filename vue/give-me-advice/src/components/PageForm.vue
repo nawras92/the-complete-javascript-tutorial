@@ -3,19 +3,39 @@
     <fieldset class="form-fieldset">
       <legend class="form-legend">Choose a number</legend>
       <label class="form-label">Luck Number</label>
-      <input class="form-input" type="number" />
+      <input class="form-input" type="number" v-model="userNumber" />
     </fieldset>
     <fieldset class="form-fieldset">
       <legend class="form-legend">Text Color</legend>
       <label class="form-label">Color</label>
-      <input class="form-input" type="color" />
+      <input class="form-input" type="color" v-model="userColor" />
     </fieldset>
+    <form-result :color="userColor" :advice="getAdvice"></form-result>
   </form>
 </template>
 
 <script>
+import FormResult from './FormResult.vue';
 export default {
   name: 'PageForm',
+  components: {
+    FormResult,
+  },
+
+  data() {
+    return {
+      userNumber: 5,
+      userColor: '#000000',
+      quotes: ['quote 1', 'quote 2', 'quote 3 ', 'quote 4'],
+    };
+  },
+  computed: {
+    getAdvice() {
+      const advice = this.quotes.find((q, i) => i === this.userNumber);
+      if (!advice) return 'unlucky enough, no advice for you';
+      return advice;
+    },
+  },
 };
 </script>
 
