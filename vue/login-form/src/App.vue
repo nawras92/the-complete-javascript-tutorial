@@ -1,26 +1,51 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <form class="form">
+    <form-input :rules="username.rules" type="text" name="Username" />
+    <form-input :rules="password.rules" type="password" name="Password" />
+    <form-button text="Login Now" :disabled="false" />
+  </form>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import FormInput from './components/FormInput.vue';
+import FormButton from './components/FormButton.vue';
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    FormInput,
+    FormButton,
+  },
+  data() {
+    return {
+      username: {
+        rules: {
+          required: true,
+          min: 4,
+        },
+      },
+      password: {
+        rules: {
+          required: true,
+          min: 8,
+        },
+      },
+    };
+  },
+};
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  background: linear-gradient(80deg, #e5e5e5, lightblue);
+  padding: 2rem;
+  border-radius: 10px;
 }
 </style>
