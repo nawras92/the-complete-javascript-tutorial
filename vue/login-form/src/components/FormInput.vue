@@ -3,12 +3,26 @@
     <label class="form-label" :for="name">{{ name }}</label>
     <div class="form-error">{{ error }}</div>
   </div>
-  <input v-model="value" class="form-input" :type="type" :id="name" />
+  <input
+    :value="value"
+    @input="input"
+    class="form-input"
+    :type="type"
+    :id="name"
+  />
 </template>
 
 <script>
 export default {
+  emits: ['updateValue'],
   props: {
+    value: {
+      type: String,
+      required: true,
+    },
+    error: {
+      type: String,
+    },
     name: {
       type: String,
       required: true,
@@ -26,17 +40,26 @@ export default {
       },
     },
   },
-  data() {
-    return {
-      value: '',
-    };
+  created() {
+    this.$emit('updateValue', {
+      name: this.name.toLowerCase(),
+      value: this.value,
+      error: this.validate(this.value),
+    });
   },
-  computed: {
-    error() {
-      if (this.rules.required && this.value.length === 0) {
+  methods: {
+    input($event) {
+      this.$emit('updateValue', {
+        name: this.name.toLowerCase(),
+        value: $event.target.value,
+        error: this.validate($event.target.value),
+      });
+    },
+    validate(value) {
+      if (this.rules.required && value.length === 0) {
         return 'Required';
       }
-      if (this.rules.min && this.value.length < this.rules.min) {
+      if (this.rules.min && value.length < this.rules.min) {
         return `Min length is ${this.rules.min}`;
       }
     },

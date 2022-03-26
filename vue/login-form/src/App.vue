@@ -1,8 +1,22 @@
 <template>
-  <form class="form">
-    <form-input :rules="username.rules" type="text" name="Username" />
-    <form-input :rules="password.rules" type="password" name="Password" />
-    <form-button text="Login Now" :disabled="false" />
+  <form class="form" @submit.prevent="submit">
+    <form-input
+      :value="username.value"
+      :error="username.error"
+      :rules="username.rules"
+      type="text"
+      name="Username"
+      @updateValue="update"
+    />
+    <form-input
+      :value="password.value"
+      :error="password.error"
+      :rules="password.rules"
+      type="password"
+      name="Password"
+      @updateValue="update"
+    />
+    <form-button text="Login Now" :disabled="!isValid" />
   </form>
 </template>
 
@@ -18,18 +32,39 @@ export default {
   data() {
     return {
       username: {
+        value: 'u',
         rules: {
           required: true,
           min: 4,
         },
+        error: '',
       },
       password: {
+        value: '123',
         rules: {
           required: true,
           min: 8,
         },
+        error: '',
       },
     };
+  },
+  methods: {
+    update({ name, value, error }) {
+      this[name].error = error;
+      this[name].value = value;
+    },
+    submit() {
+      console.log({
+        username: this.username.value,
+        password: this.password.value,
+      });
+    },
+  },
+  computed: {
+    isValid() {
+      return !this.username.error && !this.password.error;
+    },
   },
 };
 </script>
