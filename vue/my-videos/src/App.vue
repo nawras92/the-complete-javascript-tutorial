@@ -1,26 +1,59 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <videos-form @addVideo="addVideo"></videos-form>
+  <page-section title="My Videos">
+    <template v-slot:content>
+      <videos-table @deleteVideo="deleteVideo" :videos="videos"></videos-table>
+    </template>
+    <template v-slot:controls>
+      <videos-control></videos-control>
+    </template>
+  </page-section>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import VideosForm from './components/VideosForm.vue';
+import VideosTable from './components/VideosTable.vue';
+import VideosControl from './components/VideosControl.vue';
+import PageSection from './components/PageSection.vue';
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    VideosForm,
+    VideosTable,
+    PageSection,
+    VideosControl,
+  },
+  data() {
+    return {
+      videos: [
+        { name: 'Learn Vue', url: 'http://vuejs.com' },
+        { name: 'Learn Python', url: 'http://Python.com' },
+        { name: 'funny video', url: 'http://funny.com' },
+        { name: 'nice song', url: 'http://songs.com' },
+      ],
+    };
+  },
+  methods: {
+    addVideo(payload) {
+      const { name, url } = payload;
+      this.videos.push({
+        name: name,
+        url: url,
+      });
+    },
+    deleteVideo(video) {
+      console.log(video);
+      this.videos = this.videos.filter(
+        (v) => v.name !== video.name && v.url !== video.url
+      );
+    },
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+  margin: 0;
+  padding: 0;
 }
 </style>
