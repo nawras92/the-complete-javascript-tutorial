@@ -1,16 +1,9 @@
 <template>
-  <website-page title="single post" description="single post desc">
+  <website-page :title="post.title" :description="post.description">
     <template v-slot:content>
       <card-item background="linear-gradient(30deg, lightblue, #e5e5e5)">
         <template v-slot:content>
-          <p>
-            Sit quasi error possimus quidem ab nesciunt Nemo ducimus animi
-            provident voluptatibus similique Error officia odio dolor culpa
-            eaque! Consectetur totam ad consequuntur rem incidunt Nostrum non
-            ipsum eveniet doloremque explicabo Aliquid nam molestias fuga
-            quisquam natus iste placeat pariatur veritatis tenetur, rerum Ut aut
-            ipsam aperiam necessitatibus necessitatibus amet.
-          </p></template
+          <p>{{ post.content }}</p></template
         >
       </card-item>
     </template>
@@ -26,6 +19,26 @@ export default {
     WebsitePage,
     CardItem,
     BlogButton,
+  },
+  inject: ['posts'],
+
+  data() {
+    return {
+      post: this.getPost(this.$route.params.id),
+    };
+  },
+  methods: {
+    getPost(id) {
+      const post = this.posts.find((p) => p.id === id);
+      return (
+        post || {
+          id: 0,
+          title: 'no post',
+          content: 'no content',
+          description: 'no description',
+        }
+      );
+    },
   },
 };
 </script>

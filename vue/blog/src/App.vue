@@ -1,16 +1,14 @@
 <template>
   <website-header title="simple blog" description="my beautiful blog" />
-  <blog></blog>
+  <router-view />
 </template>
 
 <script>
 import WebsiteHeader from './components/WebsiteHeader.vue';
-import Blog from './views/Blog.vue';
 export default {
   name: 'App',
   components: {
     WebsiteHeader,
-    Blog,
   },
   provide() {
     return {

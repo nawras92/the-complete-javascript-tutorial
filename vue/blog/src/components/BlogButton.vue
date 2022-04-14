@@ -1,10 +1,10 @@
 <template>
-  <a
+  <router-link
     :class="{ fullWidth: fullWidth }"
-    :href="link"
+    :to="link"
     class="button"
     :style="{ background: background, color: color }"
-    >{{ title }}</a
+    >{{ title }}</router-link
   >
 </template>
 

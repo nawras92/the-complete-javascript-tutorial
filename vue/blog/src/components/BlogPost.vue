@@ -14,7 +14,12 @@
       <p class="post-description">{{ description }}</p>
     </template>
     <template v-slot:actions>
-      <blog-button title="Read more" background="#eee" fullWidth />
+      <blog-button
+        :link="`/blog/${id}`"
+        title="Read more"
+        background="#eee"
+        fullWidth
+      />
     </template>
   </card-item>
 </template>

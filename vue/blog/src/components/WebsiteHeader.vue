@@ -5,9 +5,9 @@
       <p class="header-text">{{ description }}</p>
     </div>
     <nav class="nav header-nav">
-      <a href="/" class="nav-link">Home</a>
-      <a href="/blog" class="nav-link">Blog</a>
-      <a href="/about" class="nav-link">About</a>
+      <router-link to="/" class="nav-link">Home</router-link>
+      <router-link to="/blog" class="nav-link">Blog</router-link>
+      <router-link to="/about" class="nav-link">About</router-link>
     </nav>
   </header>
 </template>
