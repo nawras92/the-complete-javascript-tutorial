@@ -1,22 +1,13 @@
 <template>
-  <website-page title="home" description="short desc">
-    <template v-slot:content>
-      <h1>page 1</h1>
-    </template>
-  </website-page>
-  <website-page>
-    <template v-slot:content>
-      <h1>page 1</h1>
-    </template>
-  </website-page>
+  <website-header title="simple blog" description="my beautiful blog" />
 </template>
 
 <script>
-import WebsitePage from './components/WebsitePage.vue';
+import WebsiteHeader from './components/WebsiteHeader.vue';
 export default {
   name: 'App',
   components: {
-    WebsitePage,
+    WebsiteHeader,
   },
 };
 </script>
