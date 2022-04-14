@@ -1,49 +1,29 @@
 <template>
-  <card-item :showMedia="true" :showHeader="true" :showActions="true">
-    <template v-slot:media>
-      <h1>this is an image</h1>
-    </template>
-
-    <template v-slot:header>
-      <a href="/blog"> this is link</a>
-    </template>
-
+  <website-page title="home" description="short desc">
     <template v-slot:content>
-      <p>
-        Dolor minima eligendi lorem voluptatem exercitationem? Itaque quae vitae
-        suscipit soluta tenetur eligendi Laudantium perferendis consequatur a
-        pariatur sed. Error ratione nulla eveniet id error Quos delectus
-        voluptatem consequatur porro5
-      </p>
+      <h1>page 1</h1>
     </template>
-  </card-item>
-  <card-item :showMedia="true" :showHeader="true" :showActions="true">
-    <template v-slot:media>
-      <p>this is an image</p>
-    </template>
-    <template v-slot:header>
-      <hr />
-    </template>
+  </website-page>
+  <website-page>
     <template v-slot:content>
-      <h5>this is content</h5>
+      <h1>page 1</h1>
     </template>
-    <template v-slot:actions>
-      <button>click me</button>
-      <blog-button></blog-button>
-    </template>
-  </card-item>
+  </website-page>
 </template>
 
 <script>
-import CardItem from './components/CardItem.vue';
-import BlogButton from './components/BlogButton.vue';
+import WebsitePage from './components/WebsitePage.vue';
 export default {
   name: 'App',
   components: {
-    CardItem,
-    BlogButton,
+    WebsitePage,
   },
 };
 </script>
 
-<style></style>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+</style>
