@@ -47,6 +47,7 @@ export default {
 
 <style scoped>
 .button {
+  display: inline-block;
   border: none;
   outline: none;
   font-size: 1.2rem;
