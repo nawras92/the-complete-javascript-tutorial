@@ -56,6 +56,7 @@ export default {
   margin: 0.5rem;
   border-radius: 10px;
   text-decoration: none;
+  text-align: center;
 }
 
 .button:hover {
