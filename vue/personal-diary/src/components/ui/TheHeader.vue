@@ -3,6 +3,7 @@
     <div class="header-logo">
       <h1 class="header-heading">{{ title }}</h1>
       <p class="header-text">{{ description }}</p>
+      {{ getMessage }}
     </div>
     <nav class="nav header-nav" v-show="showNav">
       <a to="/" class="nav-link">Home</a>
@@ -32,6 +33,11 @@ export default {
       default() {
         return true;
       },
+    },
+  },
+  computed: {
+    getMessage() {
+      return this.$store.state.message;
     },
   },
 };

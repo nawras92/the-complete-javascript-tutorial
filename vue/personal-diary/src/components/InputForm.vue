@@ -1,23 +1,42 @@
 <template>
   <form class="form">
     <div class="form-control">
-      <label class="form-label" for="">Text: </label>
+      <label class="form-label" for="text">Text: </label>
       <textarea
-        id=""
+        id="text"
         class="form-textarea"
-        name=""
+        name="text"
         cols="30"
         rows="10"
+        v-model="text"
       ></textarea>
     </div>
     <div class="form-control">
-      <label class="form-label" for="">Color: </label>
-      <input class="form-input" type="color" />
+      <label class="form-label" for="background">Color: </label>
+      <input
+        id="background"
+        name="background"
+        v-model="background"
+        class="form-input"
+        type="color"
+      />
     </div>
     <div class="form-control">
-      <the-button background="crimson" color="white" title="add item" />
-      <the-button background="blue" color="white" title="edit item" />
+      <the-button
+        @click="addItem"
+        background="crimson"
+        color="white"
+        title="add item"
+      />
+      <the-button
+        @click="editItem"
+        background="blue"
+        color="white"
+        title="edit item"
+      />
     </div>
+
+    {{ getCurrentItem }}
   </form>
 </template>
 
@@ -27,6 +46,46 @@ import TheButton from './ui/TheButton.vue';
 export default {
   components: {
     TheButton,
+  },
+  created() {
+    this.text = this.getText;
+    this.background = this.getBackground;
+  },
+  data() {
+    return {
+      text: '',
+      background: '#ffffff',
+    };
+  },
+  computed: {
+    getCurrentItem() {
+      return this.$store.getters.getCurrentItem;
+    },
+    getText() {
+      return this.$store.getters.getCurrentItem.text;
+    },
+    getBackground() {
+      return this.$store.getters.getCurrentItem.background;
+    },
+  },
+  methods: {
+    addItem() {
+      const newItem = {
+        text: this.text,
+        background: this.background,
+      };
+      this.$store.dispatch('addItem', newItem);
+    },
+    editItem() {
+      const newItem = {
+        text: this.text,
+        background: this.background,
+      };
+      this.$store.dispatch('editItem', {
+        oldItem: this.$store.getters.getCurrentItem,
+        newItem,
+      });
+    },
   },
 };
 </script>
