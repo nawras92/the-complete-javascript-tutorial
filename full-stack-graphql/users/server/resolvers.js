@@ -36,5 +36,15 @@ module.exports = {
       users.push(newUser);
       return true;
     },
+    removeUser: (parent, args, models) => {
+      const { users } = models;
+      const { id } = args;
+      const index = users.findIndex((u) => u.id === Number(id));
+      if (index > -1) {
+        users.splice(index, 1);
+        return true;
+      }
+      return false;
+    },
   },
 };

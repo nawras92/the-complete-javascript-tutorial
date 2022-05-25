@@ -14,6 +14,7 @@ module.exports = gql`
       favNumber: Int!
       isActive: Boolean!
     ): Boolean!
+    removeUser(id: ID!): Boolean!
   }
   type User {
     id: ID!
