@@ -15,6 +15,13 @@ module.exports = gql`
       isActive: Boolean!
     ): Boolean!
     removeUser(id: ID!): Boolean!
+    editUser(
+      id: ID!
+      firstName: String!
+      username: String!
+      favNumber: Int!
+      isActive: Boolean!
+    ): User!
   }
   type User {
     id: ID!

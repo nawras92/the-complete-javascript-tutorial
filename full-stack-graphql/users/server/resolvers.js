@@ -46,5 +46,25 @@ module.exports = {
       }
       return false;
     },
+    editUser: (parent, args, models) => {
+      const { users } = models;
+      const { id, firstName, username, favNumber, isActive } = args;
+      const index = users.findIndex((u) => u.id === Number(id));
+      if (index > -1) {
+        const user = users[index];
+        user.firstName = firstName || user.firstName;
+        user.username = username || user.username;
+        user.favNumber = favNumber || user.favNumber;
+        user.isActive = isActive || user.isActive;
+        return user;
+      }
+      return {
+        id: -10000,
+        firstName: 'no user',
+        username: 'no user',
+        isActive: false,
+        favNumber: -10000,
+      };
+    },
   },
 };
