@@ -21,4 +21,19 @@ module.exports = {
       };
     },
   },
+  Mutation: {
+    addUser: (parent, args, models) => {
+      const { users } = models;
+      const { id, firstName, username, favNumber, isActive } = args;
+      const newUser = {
+        id,
+        firstName,
+        username,
+        favNumber,
+        isActive,
+      };
+      users.push(newUser);
+      return true;
+    },
+  },
 };
