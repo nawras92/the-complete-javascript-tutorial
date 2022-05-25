@@ -1,17 +1,8 @@
 const PORT = 4000;
 const express = require('express');
 const { ApolloServer, gql } = require('apollo-server-express');
-
-const typeDefs = gql`
-  type Query {
-    doesItWork: Boolean!
-  }
-`;
-const resolvers = {
-  Query: {
-    doesItWork: () => true,
-  },
-};
+const resolvers = require('./resolvers');
+const typeDefs = require('./typeDefs');
 
 async function startServer() {
   const app = express();
