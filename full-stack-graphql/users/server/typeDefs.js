@@ -4,6 +4,7 @@ module.exports = gql`
   type Query {
     doesItWork: Boolean!
     getAllUsers: [User!]!
+    getUser(id: ID!): User!
   }
   type User {
     id: ID!
