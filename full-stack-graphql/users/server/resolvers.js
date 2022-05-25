@@ -7,6 +7,7 @@ module.exports = {
     },
     getUser: (parent, args, models) => {
       const { users } = models;
+      console.log(users);
       const { id } = args;
       const user = users.find((u) => u.id === Number(id));
       if (user) {
@@ -26,7 +27,7 @@ module.exports = {
       const { users } = models;
       const { id, firstName, username, favNumber, isActive } = args;
       const newUser = {
-        id,
+        id: Number(id),
         firstName,
         username,
         favNumber,
