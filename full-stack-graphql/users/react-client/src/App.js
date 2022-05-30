@@ -1,5 +1,9 @@
+import { Routes, Route, Link } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
+import Users from './components/Users';
+import Home from './components/Home';
+import AddUser from './components/AddUser';
 
 function App() {
   return (
@@ -7,17 +11,22 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <nav>
-          <a href="/" style={{ color: 'White' }}>
+          <Link to="/" style={{ color: 'White' }}>
             Home |
-          </a>
-          <a href="/users" style={{ color: 'White' }}>
+          </Link>
+          <Link to="/users" style={{ color: 'White' }}>
             Users |
-          </a>
-          <a href="/add-user" style={{ color: 'White' }}>
+          </Link>
+          <Link to="/add-user" style={{ color: 'White' }}>
             Add User |
-          </a>
+          </Link>
         </nav>
       </header>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/users" element={<Users />} />
+        <Route path="/add-user" element={<AddUser />} />
+      </Routes>
     </div>
   );
 }
