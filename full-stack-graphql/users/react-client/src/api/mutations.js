@@ -23,6 +23,29 @@ const mutations = {
       )
     }
   `,
+
+  editUser: gql`
+    mutation editUserFunc(
+      $userID: ID!
+      $firstName: String!
+      $username: String!
+      $favNumber: Int!
+      $isActive: Boolean!
+    ) {
+      editUser(
+        id: $userID
+        firstName: $firstName
+        username: $username
+        favNumber: $favNumber
+        isActive: $isActive
+      ) {
+        firstName
+        username
+        favNumber
+        isActive
+      }
+    }
+  `,
 };
 
 export default mutations;
