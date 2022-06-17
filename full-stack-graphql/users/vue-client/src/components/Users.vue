@@ -3,9 +3,7 @@
     <h3>users</h3>
     <div class="user" v-for="(user, index) in users" :key="index">
       <router-link :to="`/user/${user.id}`">{{ user.id }}</router-link>
-      <h5>{{ user.username }} - {{ user.firstName }}</h5>
-      <p>fav number: {{ user.favNumber }}</p>
-      <p>is active: {{ user.isActive ? 'active' : 'NOT active' }}</p>
+      <h5>{{ user.firstName }}</h5>
       <hr />
       <hr />
     </div>
