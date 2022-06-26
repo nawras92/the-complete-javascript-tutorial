@@ -8,7 +8,6 @@ module.exports = gql`
   }
   type Mutation {
     addUser(
-      id: ID!
       firstName: String!
       username: String!
       favNumber: Int!
@@ -17,10 +16,10 @@ module.exports = gql`
     removeUser(id: ID!): Boolean!
     editUser(
       id: ID!
-      firstName: String!
-      username: String!
-      favNumber: Int!
-      isActive: Boolean!
+      firstName: String
+      username: String
+      favNumber: Int
+      isActive: Boolean
     ): User!
   }
   type User {
