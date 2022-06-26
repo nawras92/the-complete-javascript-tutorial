@@ -34,7 +34,6 @@ const AddUser = () => {
     addUserMutationFunc({
       variables: {
         ...formValues,
-        userID: new Date().valueOf(),
         favNumber: Number(formValues.favNumber),
       },
     });

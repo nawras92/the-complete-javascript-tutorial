@@ -8,14 +8,12 @@ const mutations = {
   `,
   addUser: gql`
     mutation addUserFunc(
-      $userID: ID!
       $firstName: String!
       $username: String!
       $favNumber: Int!
       $isActive: Boolean!
     ) {
       addUser(
-        id: $userID
         firstName: $firstName
         username: $username
         favNumber: $favNumber
