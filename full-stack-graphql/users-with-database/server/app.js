@@ -3,7 +3,7 @@ const express = require('express');
 const { ApolloServer, gql } = require('apollo-server-express');
 const resolvers = require('./resolvers');
 const typeDefs = require('./typeDefs');
-const users = require('./usersData');
+const models = require('./models/index');
 
 async function startServer() {
   const app = express();
@@ -11,7 +11,7 @@ async function startServer() {
     typeDefs,
     resolvers,
     context: {
-      users,
+      models,
     },
   });
   await server.start();
