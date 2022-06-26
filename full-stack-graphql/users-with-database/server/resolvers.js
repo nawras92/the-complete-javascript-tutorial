@@ -1,70 +1,82 @@
 module.exports = {
   Query: {
     doesItWork: () => true,
-    getAllUsers: (parent, args, models) => {
-      const { users } = models;
-      return users;
+    getAllUsers: (parent, args, context) => {
+      const { models } = context;
+      const { User } = models;
+      return User.findAll();
     },
-    getUser: (parent, args, models) => {
-      const { users } = models;
-      console.log(users);
+    getUser: async (parent, args, context) => {
+      const { models } = context;
+      const { User } = models;
       const { id } = args;
-      const user = users.find((u) => u.id === Number(id));
-      if (user) {
-        return user;
+      const user = await User.findByPk(id);
+      if (!user) {
+        return {
+          id: -10000,
+          firstName: 'no user',
+          username: 'no user',
+          isActive: false,
+          favNumber: -10000,
+        };
       }
-      return {
-        id: -10000,
-        firstName: 'no user',
-        username: 'no user',
-        isActive: false,
-        favNumber: -10000,
-      };
+      return user;
     },
   },
   Mutation: {
-    addUser: (parent, args, models) => {
-      const { users } = models;
+    addUser: async (parent, args, context) => {
+      const { models } = context;
+      const { User } = models;
       const { id, firstName, username, favNumber, isActive } = args;
-      const newUser = {
-        id: Number(id),
+      const newUser = await User.create({
         firstName,
         username,
         favNumber,
         isActive,
-      };
-      users.push(newUser);
-      return true;
+      });
+      return newUser.username === username;
     },
-    removeUser: (parent, args, models) => {
-      const { users } = models;
+    removeUser: async (parent, args, context) => {
+      const { models } = context;
+      const { User } = models;
       const { id } = args;
-      const index = users.findIndex((u) => u.id === Number(id));
-      if (index > -1) {
-        users.splice(index, 1);
-        return true;
-      }
-      return false;
+      const isDeleted = await User.destroy({
+        where: {
+          id,
+        },
+      });
+      return isDeleted;
     },
-    editUser: (parent, args, models) => {
-      const { users } = models;
+    editUser: async (parent, args, context) => {
+      const { models } = context;
+      const { User } = models;
       const { id, firstName, username, favNumber, isActive } = args;
-      const index = users.findIndex((u) => u.id === Number(id));
-      if (index > -1) {
-        const user = users[index];
-        user.firstName = firstName || user.firstName;
-        user.username = username || user.username;
-        user.favNumber = favNumber || user.favNumber;
-        user.isActive = isActive || user.isActive;
-        return user;
+
+      const user = await User.findByPk(id);
+      if (!user) {
+        return {
+          id: -10000,
+          firstName: 'no user',
+          username: 'no user',
+          isActive: false,
+          favNumber: -10000,
+        };
       }
-      return {
-        id: -10000,
-        firstName: 'no user',
-        username: 'no user',
-        isActive: false,
-        favNumber: -10000,
-      };
+
+      const updatedRecord = await user.update(
+        {
+          firstName,
+          username,
+          favNumber,
+          isActive,
+        },
+        {
+          where: {
+            id,
+          },
+        }
+      );
+      return updatedRecord;
     },
   },
 };
