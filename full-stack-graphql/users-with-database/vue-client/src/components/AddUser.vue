@@ -36,7 +36,6 @@ export default {
         username: '',
         favNumber: 0,
         isActive: false,
-        id: new Date().valueOf(),
       },
       addingDone: '',
     };
@@ -46,14 +45,12 @@ export default {
       this.$apollo.mutate({
         mutation: gql`
           mutation (
-            $id: ID!
             $username: String!
             $firstName: String!
             $favNumber: Int!
             $isActive: Boolean!
           ) {
             addUser(
-              id: $id
               username: $username
               firstName: $firstName
               isActive: $isActive
@@ -62,7 +59,6 @@ export default {
           }
         `,
         variables: {
-          id: user.id,
           firstName: user.firstName,
           username: user.username,
           favNumber: user.favNumber,

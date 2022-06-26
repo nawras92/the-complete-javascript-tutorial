@@ -36,7 +36,7 @@ export default {
         firstName: this.firstName,
         username: this.username,
         favNumber: this.favNumber,
-        isActive: this.isActive,
+        isActive: !!this.isActive,
         id: this.id,
       },
       editingDone: '',
