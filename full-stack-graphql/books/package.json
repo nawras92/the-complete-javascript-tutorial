@@ -1,0 +1,16 @@
+{
+  "name": "books",
+  "version": "1.0.0",
+  "description": "A graphql Books Project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nawras",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "^3.10.2",
+    "express": "^4.18.1",
+    "graphql": "^16.6.0"
+  }
+}
