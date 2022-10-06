@@ -13,4 +13,22 @@ module.exports = gql`
     description: String
     authorId: String
   }
+
+  type Mutation {
+    addBook(
+      id: ID!
+      title: String!
+      description: String
+      authorId: String
+    ): Boolean!
+
+    deleteBook(id: ID!): Boolean!
+
+    editBook(
+      id: ID!
+      title: String
+      description: String
+      authorId: String
+    ): Boolean!
+  }
 `;
