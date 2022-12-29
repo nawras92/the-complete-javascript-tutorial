@@ -1,0 +1,23 @@
+.title {
+  background: orange;
+  color: white;
+  padding: 0.5rem;
+  font-weight: bold;
+}
+
+.description {
+  background: #f4f4f4;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.link {
+  background: lime;
+  text-decoration: none;
+  padding: 0.5rem 0.8rem;
+  float: left;
+  margin-left: 1rem;
+}
+.link:hover {
+  opacity: 0.8;
+}

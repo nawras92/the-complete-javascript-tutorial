@@ -1,0 +1,32 @@
+.title {
+  background: darkblue;
+  color: white;
+  padding: 0.5rem;
+  font-weight: bold;
+}
+
+.main {
+  max-width: 80%;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: lightblue;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.subHeading {
+  margin-bottom: 1rem;
+}
+.subHeading a {
+  display: inline-block;
+  color: #333;
+  background: lime;
+  text-decoration: none;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.8rem;
+}
+
+.subHeading a:hover {
+  opacity: 0.8;
+}
