@@ -3,7 +3,12 @@ import { addOne } from '../api/recipe';
 import { accessToken } from '../api/recipe';
 
 export default function RecipeForm(props) {
-  const { initialValues } = props;
+  const {
+    initialValues,
+    method = 'POST',
+    apiPoint = addOne,
+    okMessage = 'The recipe got added  successfully',
+  } = props;
 
   // Manage State
   const [formData, setFormData] = useState(initialValues);
@@ -20,8 +25,8 @@ export default function RecipeForm(props) {
     e.preventDefault();
     setMessage('');
     try {
-      const response = await fetch(addOne, {
-        method: 'POST',
+      const response = await fetch(apiPoint, {
+        method,
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${accessToken}`,
@@ -32,7 +37,7 @@ export default function RecipeForm(props) {
         setMessage('something went wrong');
         throw new Error('something went wrong');
       }
-      setMessage('Recipe got added successfully!');
+      setMessage(okMessage);
     } catch (e) {
       console.log('Error: ', e);
     }

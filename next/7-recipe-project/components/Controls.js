@@ -1,3 +1,7 @@
+import { useRouter } from 'next/router';
+import { deleteOne } from '../api/recipe';
+import { accessToken } from '../api/recipe';
+
 export function GeneralControls(props) {
   const { showAll = true, showAdd = true } = props;
   return (
@@ -37,6 +41,79 @@ export function GeneralControls(props) {
           .button-info {
             background: lightblue;
             color: #333;
+          }
+        `}
+      </style>
+    </div>
+  );
+}
+
+export function SingleControls({ id }) {
+  const router = useRouter();
+  const handleDelete = async () => {
+    const result = window.confirm(
+      'Are you sure you want to delete this recipe?'
+    );
+    if (result) {
+      try {
+        // Send delete request to the backend
+        const response = await fetch(deleteOne(id), {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+        if (!response.ok) {
+          throw new Error('something went bad');
+        }
+        // Redirect to homepage
+        router.push('/');
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
+    //error
+  };
+  return (
+    <div className="controls">
+      <a href={`/edit/${id}`} className="button button-warning">
+        Edit
+      </a>
+      <a className="button button-danger" onClick={handleDelete}>
+        Delete
+      </a>
+
+      <style jsx>
+        {`
+          .controls {
+            background: #f4f4f4;
+            margin: 1rem auto;
+            max-width: 80%;
+            border-radius: 10px;
+            text-align: center;
+          }
+          .button {
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.3rem;
+            padding: 0.8rem 0.6rem;
+            border-radius: 10px;
+            font-weight: bold;
+            color: white;
+          }
+          .button-success {
+            background: green;
+          }
+          .button-info {
+            background: lightblue;
+            color: #333;
+          }
+          .button-danger {
+            background: tomato;
+          }
+          .button-warning {
+            background: orange;
           }
         `}
       </style>

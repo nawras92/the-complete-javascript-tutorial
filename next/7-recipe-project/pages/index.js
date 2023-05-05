@@ -30,9 +30,13 @@ export async function getServerSideProps() {
     ...r.attributes,
   }));
 
+  const sortedRecipes = recipes.sort(
+    (a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)
+  );
+
   return {
     props: {
-      recipes,
+      recipes: sortedRecipes,
     },
   };
 }

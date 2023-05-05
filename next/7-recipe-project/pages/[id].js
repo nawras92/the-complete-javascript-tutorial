@@ -1,5 +1,6 @@
 import { getOne } from '../api/recipe';
 import { GeneralControls } from '../components/Controls';
+import { SingleControls } from '../components/Controls';
 
 export default function HomePage(props) {
   const { recipe } = props;
@@ -12,6 +13,7 @@ export default function HomePage(props) {
       <p>{recipe.description}</p>
       <p>Steps: {recipe.steps}</p>
       <p>Ingredients: {recipe.ingredients}</p>
+      <SingleControls id={recipe.id} />
     </div>
   );
 }
