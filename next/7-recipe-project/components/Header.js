@@ -1,8 +1,12 @@
 import styles from '../styles/header.module.css';
 
 export default function Header() {
-  const handleLogout = () => {
-    console.log('The user logged out successfully!');
+  const handleLogout = async () => {
+    const response = await fetch('/api/logout', {
+      method: 'POST',
+    });
+    const data = await response.json();
+    console.log(data);
   };
   return (
     <header className={styles['header']}>
