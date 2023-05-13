@@ -57,17 +57,22 @@ export function SingleControls({ id }) {
     if (result) {
       try {
         // Send delete request to the backend
-        const response = await fetch(deleteOne(id), {
-          method: 'DELETE',
+        const response = await fetch('/api/deleteRecipe', {
+          method: 'POST',
           headers: {
-            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
           },
+          body: JSON.stringify({ id }),
         });
-        if (!response.ok) {
-          throw new Error('something went bad');
+        const returnedData = await response.json();
+        const { ok, message } = returnedData;
+        if (!ok) {
+          throw new Error(message);
         }
+        //Success
         // Redirect to homepage
         router.push('/');
+        console.log(message);
       } catch (e) {
         console.log(e);
       }
