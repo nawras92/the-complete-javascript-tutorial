@@ -22,7 +22,7 @@ export default function LoginForm() {
     e.preventDefault();
     // Send Login Request to backend
     try {
-      const loginResponse = await fetch(loginUser, {
+      const loginResponse = await fetch('/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -30,14 +30,13 @@ export default function LoginForm() {
         body: JSON.stringify(loginData),
       });
       const dataReturned = await loginResponse.json();
-      const { error, jwt, user } = dataReturned;
-      // if everything is okay
-      // save jwt somewhere
-      // localstorage
-      localStorage.setItem('LWNLoginToken', jwt);
-      localStorage.setItem('LWNUser', user);
-      if (error) {
-        const message = `${error?.name}: ${error?.message}`;
+      const { ok, message } = dataReturned;
+      if (ok) {
+        // redirect to dashboard
+      }
+      if (!ok) {
+        console.log(message);
+
         throw new Error(message);
       }
     } catch (e) {
