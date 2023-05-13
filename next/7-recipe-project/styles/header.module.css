@@ -1,0 +1,46 @@
+.header {
+  background: #333;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.header-nav {
+  display: flex;
+  list-style: none;
+}
+
+.header-nav-item {
+  margin: 0.5rem;
+}
+
+.header-nav-link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.header-nav-link:hover {
+  opacity: 0.8;
+}
+
+.header-admin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button {
+  text-decoration: none;
+  background: green;
+  color: #ffff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  margin: auto 1rem;
+}
+
+.button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
