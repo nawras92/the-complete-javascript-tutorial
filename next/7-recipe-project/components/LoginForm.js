@@ -31,6 +31,11 @@ export default function LoginForm() {
       });
       const dataReturned = await loginResponse.json();
       const { error, jwt, user } = dataReturned;
+      // if everything is okay
+      // save jwt somewhere
+      // localstorage
+      localStorage.setItem('LWNLoginToken', jwt);
+      localStorage.setItem('LWNUser', user);
       if (error) {
         const message = `${error?.name}: ${error?.message}`;
         throw new Error(message);
