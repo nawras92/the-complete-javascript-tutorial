@@ -1,14 +1,7 @@
 import { useState } from 'react';
-import { addOne } from '../api/recipe';
-import { accessToken } from '../api/recipe';
 
 export default function RecipeForm(props) {
-  const {
-    initialValues,
-    method = 'POST',
-    apiPoint = addOne,
-    okMessage = 'The recipe got added  successfully',
-  } = props;
+  const { initialValues, method = 'POST', apiPoint } = props;
 
   // Manage State
   const [formData, setFormData] = useState(initialValues);
@@ -29,15 +22,18 @@ export default function RecipeForm(props) {
         method,
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${accessToken}`,
         },
         body: JSON.stringify({ data: formData }),
       });
-      if (!response.ok) {
-        setMessage('something went wrong');
-        throw new Error('something went wrong');
+      const dataReturned = await response.json();
+      console.log(dataReturned);
+      const { ok, message } = dataReturned;
+      if (!ok) {
+        setMessage(message);
+        throw new Error(message);
       }
-      setMessage(okMessage);
+      // Success
+      setMessage(message);
     } catch (e) {
       console.log('Error: ', e);
     }

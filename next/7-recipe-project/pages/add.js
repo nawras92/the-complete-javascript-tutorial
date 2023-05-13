@@ -21,7 +21,11 @@ export default function AddPage() {
         <GeneralControls showAdd={false} />
       </header>
       <div className="page-form">
-        <RecipeForm initialValues={initialValues} />
+        <RecipeForm
+          initialValues={initialValues}
+          apiPoint="/api/addRecipe"
+          method="POST"
+        />
       </div>
     </div>
   );
