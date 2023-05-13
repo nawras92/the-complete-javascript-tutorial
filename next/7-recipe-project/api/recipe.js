@@ -7,3 +7,6 @@ export const getOne = (id) => `${baseUrl}/api/recipes/${id}`;
 export const addOne = `${baseUrl}/api/recipes/`;
 export const deleteOne = (id) => `${baseUrl}/api/recipes/${id}`;
 export const updateOne = (id) => `${baseUrl}/api/recipes/${id}`;
+
+/*Login*/
+export const loginUser = `${baseUrl}/api/auth/local`;

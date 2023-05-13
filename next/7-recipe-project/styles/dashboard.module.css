@@ -1,0 +1,102 @@
+/**Dashboard Container */
+.dashboard-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard {
+  box-shadow: 3px 2px 30px rgba(0, 0, 0, 0.2);
+  padding: 3rem 4rem;
+  border-radius: 10px;
+}
+
+.dashboard-welcome {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.button-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  display: inline-block;
+  text-align: center;
+  margin: 0.2rem 1rem;
+  border: none;
+  outline: none;
+  padding: 1rem 1.2rem;
+  border-radius: 1rem;
+  font-weight: bold;
+  transition: all 1s ease-in;
+  text-decoration: none;
+  color: #333;
+}
+
+.button:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.button-info {
+  background: lightblue;
+}
+.button-success {
+  background: green;
+  color: #fff;
+}
+
+/* Form */
+.form-wrapper {
+  background: #f4f4f4;
+  padding: 3rem;
+  border-radius: 10px;
+  box-shadow: 10px 2px 30px rgba(0, 0, 0, 0.1);
+  transition: all 1s ease-in;
+}
+
+.form-wrapper:hover {
+  box-shadow: -10px 2px 30px rgba(0, 0, 0, 0.1);
+}
+
+.form-message {
+}
+
+.form {
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.input {
+  outline: none;
+  border: none;
+  font-size: 1.2rem;
+  padding: 1rem;
+  border-radius: 10px;
+  color: green;
+}
+
+.submit-button {
+  display: inline-block;
+  width: 100%;
+  margin: 1rem auto;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  background: lightgreen;
+  color: #333;
+}
