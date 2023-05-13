@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 export default function RecipeForm(props) {
-  const { initialValues, method = 'POST', apiPoint } = props;
+  const { initialValues, method = 'POST', apiPoint, args } = props;
 
   // Manage State
   const [formData, setFormData] = useState(initialValues);
@@ -23,10 +23,9 @@ export default function RecipeForm(props) {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ data: formData }),
+        body: JSON.stringify({ data: formData, id: args?.id }),
       });
       const dataReturned = await response.json();
-      console.log(dataReturned);
       const { ok, message } = dataReturned;
       if (!ok) {
         setMessage(message);

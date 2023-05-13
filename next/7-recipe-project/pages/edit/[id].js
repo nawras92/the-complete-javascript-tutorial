@@ -14,9 +14,9 @@ export default function EditRecipePage(props) {
       <div className="page-form">
         <RecipeForm
           initialValues={recipe}
-          method="PUT"
-          apiPoint={updateOne(recipe.id)}
-          okMessage="Reicpe got edited successfully!"
+          method="POST"
+          apiPoint="/api/editRecipe"
+          args={{ id: recipe.id }}
         />
       </div>
     </div>
