@@ -14,9 +14,12 @@ export default async function handler(req, res) {
       });
       // Analyse response
       const dataReturned = await loginResponse.json();
-      const { jwt, error } = dataReturned;
+      const { user, jwt, error } = dataReturned;
       // Success
-      res.setHeader('Set-Cookie', `LWNJwt=${jwt}; Path=/; HttpOnly`);
+      res.setHeader('Set-Cookie', [
+        `LWNJwt=${jwt}; Path=/; HttpOnly`,
+        `LWNUser=${JSON.stringify(user)}; Path=/; HttpOnly`,
+      ]);
       res.status(200);
       res.json({ message: 'Successfully Logged In', ok: true });
       // Error
