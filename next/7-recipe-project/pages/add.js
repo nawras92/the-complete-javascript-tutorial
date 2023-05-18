@@ -1,7 +1,10 @@
 import { GeneralControls } from '../components/Controls';
 import RecipeForm from '../components/RecipeForm';
+import useUser from '../hooks/useUser';
 
 export default function AddPage() {
+  // Get User
+  const user = useUser();
   const initialValues = {
     title: '',
     description: '',
