@@ -11,6 +11,7 @@ export const updateOne = (id) => `${baseUrl}/api/recipes/${id}`;
 /*Login*/
 export const loginUser = `${baseUrl}/api/auth/local`;
 export const isLoggedIn = `${baseUrl}/api/users/me`;
+export const registerUser = `${baseUrl}/api/auth/local/register`;
 
 // User Recipe API
 export const getMyRecipes = (userId) =>

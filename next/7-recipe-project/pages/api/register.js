@@ -1,10 +1,10 @@
-import { loginUser } from '../../api/recipe';
+import { registerUser } from '../../api/recipe';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {
       // Send Login request to the backend
-      const loginResponse = await fetch(loginUser, {
+      const registerResponse = await fetch(registerUser, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -13,21 +13,17 @@ export default async function handler(req, res) {
         body: JSON.stringify(req.body),
       });
       // Analyse response
-      const dataReturned = await loginResponse.json();
-      const { user, jwt, error } = dataReturned;
+      const dataReturned = await registerResponse.json();
+      const { error } = dataReturned;
+      // error
       if (error) {
         const message = `${error?.name}: ${error?.message}`;
         res.status(401);
         res.json({ ok: false, message });
         throw new Error(message);
       }
-      // Success
-      res.setHeader('Set-Cookie', [
-        `LWNJwt=${jwt}; Path=/; HttpOnly`,
-        `LWNUser=${JSON.stringify(user)}; Path=/; HttpOnly`,
-      ]);
       res.status(200);
-      res.json({ message: 'Successfully Logged In', ok: true });
+      res.json({ message: 'Successfully Registered', ok: true });
       // Error
     } catch (e) {
       console.log(e);
