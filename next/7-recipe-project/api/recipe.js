@@ -10,3 +10,4 @@ export const updateOne = (id) => `${baseUrl}/api/recipes/${id}`;
 
 /*Login*/
 export const loginUser = `${baseUrl}/api/auth/local`;
+export const isLoggedIn = `${baseUrl}/api/users/me`;
