@@ -1,3 +1,76 @@
+/*Page container*/
+.page-container {
+}
+
+.page-header {
+  background: green;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.page-content {
+  max-width: 90%;
+  margin: 1rem auto;
+}
+
+/* Table */
+.table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 100%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.table thead tr {
+  background-color: indigo;
+  color: #ffffff;
+}
+.table th,
+.table td {
+  padding: 12px 15px;
+  text-align: center;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.table tbody tr:last-of-type {
+  border-bottom: 2px solid indigo;
+}
+
+.table tbody tr:hover {
+  color: indigo;
+}
+
+.table a {
+  text-decoration: none;
+  color: #333;
+}
+.table a:hover {
+  opacity: 0.8;
+}
+.table .button-delete {
+  background: tomato;
+  color: #fff;
+  font-size: 0.8rem;
+  padding: 0.5rem 0.8rem;
+}
+.table .button-edit {
+  background: green;
+  color: #fff;
+  font-size: 0.8rem;
+  padding: 0.5rem 0.8rem;
+}
 /**Dashboard Container */
 .dashboard-container {
   height: 100vh;
