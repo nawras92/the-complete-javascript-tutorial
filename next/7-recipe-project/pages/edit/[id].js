@@ -2,8 +2,10 @@ import { GeneralControls } from '../../components/Controls';
 import RecipeForm from '../../components/RecipeForm';
 import { getOne } from '../../api/recipe';
 import { updateOne } from '../../api/recipe';
+import useUser from '../../hooks/useUser';
 
 export default function EditRecipePage(props) {
+  useUser({ redirectTo: true });
   const { recipe } = props;
   return (
     <div className="page-container">

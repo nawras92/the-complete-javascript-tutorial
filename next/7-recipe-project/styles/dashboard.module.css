@@ -52,6 +52,10 @@
   background: green;
   color: #fff;
 }
+.button-warning {
+  background: orange;
+  color: #fff;
+}
 
 /* Form */
 .form-wrapper {

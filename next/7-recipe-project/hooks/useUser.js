@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-export default function useUser() {
+export default function useUser(props = {}) {
+  const { redirectTo = false } = props;
   const [user, setUser] = useState(null);
   const router = useRouter();
 
@@ -15,7 +16,7 @@ export default function useUser() {
         if (loggedIn) {
           setUser(user);
         }
-        if (!loggedIn) {
+        if (!loggedIn && redirectTo) {
           // Redirect to login Page
           router.push('/login');
         }

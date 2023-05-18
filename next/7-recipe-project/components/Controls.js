@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { deleteOne } from '../api/recipe';
 import { accessToken } from '../api/recipe';
+import useUser from '../hooks/useUser';
 
 export function GeneralControls(props) {
   const { showAll = true, showAdd = true } = props;
@@ -80,6 +81,11 @@ export function SingleControls({ id }) {
 
     //error
   };
+
+  const user = useUser();
+  if (!user) {
+    return;
+  }
   return (
     <div className="controls">
       <a href={`/edit/${id}`} className="button button-warning">

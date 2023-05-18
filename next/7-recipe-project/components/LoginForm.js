@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { loginUser } from '../api/recipe';
+import { useRouter } from 'next/router';
 import styles from '../styles/dashboard.module.css';
 
 export default function LoginForm() {
+  const router = useRouter();
   const [loginData, setLoginData] = useState({
     identifier: '',
     password: '',
@@ -33,6 +35,8 @@ export default function LoginForm() {
       const { ok, message } = dataReturned;
       if (ok) {
         // redirect to dashboard
+        router.push('/dashboard');
+        window.location.reload();
       }
       if (!ok) {
         console.log(message);

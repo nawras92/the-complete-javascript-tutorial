@@ -4,7 +4,7 @@ import useUser from '../hooks/useUser';
 
 export default function AddPage() {
   // Get User
-  const user = useUser();
+  const user = useUser({ redirectTo: true });
   const initialValues = {
     title: '',
     description: '',
