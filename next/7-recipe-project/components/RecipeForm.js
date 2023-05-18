@@ -33,6 +33,7 @@ export default function RecipeForm(props) {
       }
       // Success
       setMessage(message);
+      console.log(formData);
     } catch (e) {
       console.log('Error: ', e);
     }

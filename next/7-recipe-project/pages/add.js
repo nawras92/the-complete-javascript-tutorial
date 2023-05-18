@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { useEffect } from 'react';
 import { GeneralControls } from '../components/Controls';
 import RecipeForm from '../components/RecipeForm';
 import useUser from '../hooks/useUser';
@@ -5,6 +7,12 @@ import useUser from '../hooks/useUser';
 export default function AddPage() {
   // Get User
   const user = useUser({ redirectTo: true });
+  const [currentUser, setCurrentUser] = useState(false);
+  useEffect(() => {
+    if (user) {
+      setCurrentUser(user);
+    }
+  }, [user]);
   const initialValues = {
     title: '',
     description: '',
@@ -24,11 +32,13 @@ export default function AddPage() {
         <GeneralControls showAdd={false} />
       </header>
       <div className="page-form">
-        <RecipeForm
-          initialValues={initialValues}
-          apiPoint="/api/addRecipe"
-          method="POST"
-        />
+        {currentUser && (
+          <RecipeForm
+            initialValues={{ ...initialValues, author: currentUser?.id }}
+            apiPoint="/api/addRecipe"
+            method="POST"
+          />
+        )}
       </div>
     </div>
   );
