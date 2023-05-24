@@ -1,27 +1,26 @@
-import { GeneralControls } from '../../components/Controls';
 import RecipeForm from '../../components/RecipeForm';
+import Layout from '../../components/Layout';
 import { getOne } from '../../api/recipe';
-import { updateOne } from '../../api/recipe';
 import useUser from '../../hooks/useUser';
+import { edit_recipe_page_title } from '../../messages';
 
 export default function EditRecipePage(props) {
   useUser({ redirectTo: true });
   const { recipe } = props;
   return (
-    <div className="page-container">
-      <header className="page-header">
-        <h1>Edit Recipe: {recipe.title}</h1>
-        <GeneralControls />
-      </header>
-      <div className="page-form">
-        <RecipeForm
-          initialValues={recipe}
-          method="POST"
-          apiPoint="/api/editRecipe"
-          args={{ id: recipe.id }}
-        />
+    <Layout title={`${edit_recipe_page_title}: ${recipe.title}`}>
+      <div className="page-container">
+        <div className="page-form">
+          <RecipeForm
+            initialValues={recipe}
+            method="POST"
+            apiPoint="/api/editRecipe"
+            args={{ id: recipe.id }}
+            editForm={true}
+          />
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 }
 

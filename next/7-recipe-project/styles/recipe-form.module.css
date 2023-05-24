@@ -1,0 +1,105 @@
+.form-container {
+  max-width: 70%;
+  margin: 2rem auto;
+  box-shadow: 1px 1px 10px var(--primary-color);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+@media screen and (max-width: 700px) {
+  .form-container {
+    max-width: 85%;
+  }
+}
+.form-group {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.helper-text {
+  font-size: 0.8rem;
+  opacity: 0.5;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.form label {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.form input {
+  outline: none;
+  border: none;
+  border-bottom: 2px solid var(--primary-color);
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: var(--changa-font);
+  color: var(--primary-color);
+}
+
+.form input:focus {
+  border-bottom: 2px solid var(--secondary-color);
+}
+
+.form textarea {
+  outline: none;
+  overflow: none;
+  border: 2px solid #f4f4f4;
+  box-shadow: 1px 1px 5px #f4f4f4;
+  width: 80%;
+  height: 150px;
+  font-family: var(--changa-font);
+  font-size: 1rem;
+  padding: 10px;
+}
+
+.form textarea:focus {
+  border: 2px solid var(--primary-color);
+}
+
+.form input[type='number'] {
+  appearance: none;
+  -moz-appearance: textfield;
+  width: 50px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.form input[type='number']:focus,
+.form select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px var(--primary-color);
+}
+
+.form select {
+  width: 40%;
+  padding: 10px;
+  font-size: 0.8rem;
+  border: 1px solid #ccc;
+  background: #fff;
+  box-shadow: 10px 5px 10px #ccc;
+  font-family: var(--changa-font);
+  border-radius: 10px;
+}
+
+.button {
+  display: block;
+  width: 100%;
+  background: var(--secondary-color);
+  outline: none;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: var(--changa-font);
+  transition: all 1s ease-in;
+}
+
+.button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}

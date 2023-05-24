@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { GeneralControls } from '../components/Controls';
 import RecipeForm from '../components/RecipeForm';
+import Layout from '../components/Layout';
 import useUser from '../hooks/useUser';
+import { add_recipe_page_title } from '../messages';
 
 export default function AddPage() {
   // Get User
@@ -26,20 +27,18 @@ export default function AddPage() {
     notes: '',
   };
   return (
-    <div className="page-container">
-      <header className="page-header">
-        <h1>Add New Recipe</h1>
-        <GeneralControls showAdd={false} />
-      </header>
-      <div className="page-form">
-        {currentUser && (
-          <RecipeForm
-            initialValues={{ ...initialValues, author: currentUser?.id }}
-            apiPoint="/api/addRecipe"
-            method="POST"
-          />
-        )}
+    <Layout title={add_recipe_page_title}>
+      <div className="page-container">
+        <div className="page-form">
+          {currentUser && (
+            <RecipeForm
+              initialValues={{ ...initialValues, author: currentUser?.id }}
+              apiPoint="/api/addRecipe"
+              method="POST"
+            />
+          )}
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 }
