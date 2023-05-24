@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import { loginUser } from '../api/recipe';
 import { useRouter } from 'next/router';
 import styles from '../styles/dashboard.module.css';
+import { authentication_page_email_label } from '../messages';
+import { authentication_page_password_label } from '../messages';
+import { authentication_page_login_button } from '../messages';
 
 export default function LoginForm() {
   const router = useRouter();
@@ -55,7 +57,7 @@ export default function LoginForm() {
       <form className={styles['form']} onSubmit={handleSubmit}>
         <div className={styles['form-group']}>
           <label className={styles['label']} htmlFor="identifier">
-            Email
+            {authentication_page_email_label}
           </label>
           <input
             className={styles['input']}
@@ -67,7 +69,7 @@ export default function LoginForm() {
         </div>
         <div className={styles['form-group']}>
           <label className={styles['label']} htmlFor="password">
-            Password
+            {authentication_page_password_label}
           </label>
           <input
             className={styles['input']}
@@ -79,7 +81,7 @@ export default function LoginForm() {
         </div>
         <div className={styles['form-group']}>
           <button className={`${styles['button']} ${styles['submit-button']}`}>
-            Login
+            {authentication_page_login_button}
           </button>
         </div>
       </form>
