@@ -1,12 +1,18 @@
 import styles from '../../styles/dashboard.module.css';
+import Layout from '../../components/Layout';
+import { my_recipes_page_title } from '../../messages';
+import { my_recipes_page_recipe_title } from '../../messages';
+import { my_recipes_page_recipe_id } from '../../messages';
+import { my_recipes_page_recipe_description } from '../../messages';
+import { my_recipes_page_recipe_edit } from '../../messages';
+import { my_recipes_page_recipe_delete } from '../../messages';
+import { my_recipes_page_recipe_delete_prompt } from '../../messages';
 
 export default function MyRecipesPage(props) {
   const { recipes } = props;
 
   const handleDelete = async (id) => {
-    const result = window.confirm(
-      'Are you sure you want to delete this recipe?'
-    );
+    const result = window.confirm(my_recipes_page_recipe_delete_prompt);
     if (result) {
       try {
         // Send delete request to the backend
@@ -35,55 +41,54 @@ export default function MyRecipesPage(props) {
     //error
   };
   return (
-    <div className={styles['page-container']}>
-      <div className={styles['page-header']}>
-        <h1>My Recipes</h1>
-      </div>
-      <div className={styles['page-content']}>
-        <table className={styles['table']}>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Recipe Title</th>
-              <th>Recipe Description</th>
-              <th>Edit</th>
-              <th>X</th>
-            </tr>
-          </thead>
+    <Layout title={my_recipes_page_title}>
+      <div className={styles['page-container']}>
+        <div className={styles['page-content']}>
+          <table className={styles['table']}>
+            <thead>
+              <tr>
+                <th>{my_recipes_page_recipe_id}</th>
+                <th>{my_recipes_page_recipe_title}</th>
+                <th>{my_recipes_page_recipe_description}</th>
+                <th>{my_recipes_page_recipe_edit}</th>
+                <th>{my_recipes_page_recipe_delete}</th>
+              </tr>
+            </thead>
 
-          <tbody>
-            {recipes &&
-              recipes.map((r, i) => {
-                return (
-                  <tr key={i}>
-                    <td>#{r.id}</td>
-                    <td>
-                      <a href={`/${r.id}`}>{r.title}</a>
-                    </td>
-                    <td>{r.description}</td>
-                    <td>
-                      <a
-                        href={`/edit/${r.id}`}
-                        className={`${styles['button']} ${styles['button-edit']}`}
-                      >
-                        Edit
-                      </a>
-                    </td>
-                    <td>
-                      <a
-                        onClick={() => handleDelete(r.id)}
-                        className={`${styles['button']} ${styles['button-delete']}`}
-                      >
-                        Delete
-                      </a>
-                    </td>
-                  </tr>
-                );
-              })}
-          </tbody>
-        </table>
+            <tbody>
+              {recipes &&
+                recipes.map((r, i) => {
+                  return (
+                    <tr key={i}>
+                      <td>#{r.id}</td>
+                      <td>
+                        <a href={`/${r.id}`}>{r.title}</a>
+                      </td>
+                      <td>{r.description}</td>
+                      <td>
+                        <a
+                          href={`/edit/${r.id}`}
+                          className={`${styles['button']} ${styles['button-edit']}`}
+                        >
+                          {my_recipes_page_recipe_edit}
+                        </a>
+                      </td>
+                      <td>
+                        <a
+                          onClick={() => handleDelete(r.id)}
+                          className={`${styles['button']} ${styles['button-delete']}`}
+                        >
+                          {my_recipes_page_recipe_delete}
+                        </a>
+                      </td>
+                    </tr>
+                  );
+                })}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 }
 

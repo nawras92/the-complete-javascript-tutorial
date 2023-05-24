@@ -20,10 +20,12 @@
 .table {
   border-collapse: collapse;
   margin: 25px 0;
-  font-size: 0.9em;
+  font-size: 0.8rem;
+  line-height: 1rem;
   font-family: sans-serif;
   min-width: 100%;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  font-family: var(--changa-font);
 }
 
 .table thead tr {
@@ -62,13 +64,13 @@
 .table .button-delete {
   background: tomato;
   color: #fff;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   padding: 0.5rem 0.8rem;
 }
 .table .button-edit {
   background: green;
   color: #fff;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   padding: 0.5rem 0.8rem;
 }
 /**Dashboard Container */
