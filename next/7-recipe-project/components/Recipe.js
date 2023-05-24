@@ -18,6 +18,7 @@ export default function Recipe(props) {
     total_time,
     servings,
     updatedAt,
+    single = false,
   } = props;
   return (
     <div className={styles['recipe']}>
@@ -27,11 +28,13 @@ export default function Recipe(props) {
         className={styles['recipe-thumbnail']}
       />
       <div className={styles['recipe-details']}>
-        <h3 className={styles['recipe-title']}>
-          <a href={`/${id}`} className={styles['recipe-link']}>
-            {title}
-          </a>
-        </h3>
+        {!single && (
+          <h3 className={styles['recipe-title']}>
+            <a href={`/${id}`} className={styles['recipe-link']}>
+              {title}
+            </a>
+          </h3>
+        )}
         <p className={styles['recipe-description']}>{description}</p>
 
         <div className={styles['recipe-meta']}>

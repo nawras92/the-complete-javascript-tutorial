@@ -1,7 +1,7 @@
 /* Recipe Container */
 .recipes-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
   max-width: 90%;
   margin: 1rem auto;
@@ -27,16 +27,28 @@
   display: flex;
 }
 
+@media screen and (max-width: 786px) {
+  .recipe {
+    display: block;
+  }
+}
+
 .recipe-thumbnail {
   display: inline-block;
   width: 100%;
   flex: 1 1 200px;
   object-fit: cover;
-  border-radius: 0 5px 5px 0;
+  border-radius: 0 10px 10px 0;
+}
+@media screen and (max-width: 786px) {
+  .recipe-thumbnail {
+    border-radius: 0;
+  }
 }
 .recipe-details {
   flex: 1 0 50%;
   text-align: center;
+  border-bottom-left-radius: 10px;
 }
 .recipe-title {
   background: var(--primary-color);
@@ -44,7 +56,13 @@
   margin-bottom: 1rem;
   color: #fff;
   font-weight: bold;
+  border-top-left-radius: 10px;
   transition: all 1s ease-in;
+}
+@media screen and (max-width: 786px) {
+  .recipe-title {
+    border-radius: 0;
+  }
 }
 .recipe-title:hover {
   background: #333;
@@ -62,7 +80,7 @@
 
 .recipe-meta {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   justify-content: center;
   align-self: center;
   text-align: center;
@@ -85,6 +103,50 @@
 
 @media screen and (max-width: 800px) {
   .recipe-meta {
-    display: block;
+    grid-template-columns: repeat(2, 1fr);
   }
+}
+
+/* recipe single page */
+.recipe-container {
+  max-width: 80%;
+  margin: 1rem auto;
+}
+
+@media screen and (max-width: 700px) {
+  .recipe-container {
+    max-width: 90%;
+  }
+}
+
+/* recipe cards */
+.recipe-content {
+  margin: 1rem auto;
+  max-width: 90%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+}
+
+@media screen and (max-width: 700px) {
+  .recipe-content {
+    display: block;
+    max-width: 100%;
+  }
+}
+.recipe-card {
+  background: #f4f4f4;
+  box-shadow: 1px 1px 5px var(--secondary-color);
+  border-radius: 10px;
+  padding: 1rem 0.4rem;
+  margin: 1rem auto;
+}
+.recipe-card-content {
+  padding: 1rem;
+}
+
+.recipe-card-header {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: underline;
 }

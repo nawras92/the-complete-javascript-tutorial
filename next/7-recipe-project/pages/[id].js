@@ -1,20 +1,41 @@
 import { getOne } from '../api/recipe';
-import { GeneralControls } from '../components/Controls';
-import { SingleControls } from '../components/Controls';
+import Layout from '../components/Layout';
+import Recipe from '../components/Recipe';
+import styles from '../styles/recipe.module.css';
+import { recipes_ingredients } from '../messages';
+import { recipes_steps } from '../messages';
+import { recipes_notes } from '../messages';
 
 export default function HomePage(props) {
   const { recipe } = props;
   return (
-    <div className="page-container">
-      <GeneralControls />
-      <header className="page-header">
-        <h1>{recipe.title}</h1>
-      </header>
-      <p>{recipe.description}</p>
-      <p>Steps: {recipe.steps}</p>
-      <p>Ingredients: {recipe.ingredients}</p>
-      <SingleControls id={recipe.id} />
-    </div>
+    <Layout title={recipe.title} description={recipe.description}>
+      <div className={styles['recipe-container']}>
+        <Recipe {...recipe} single={true} />
+        <div className={styles['recipe-content']}>
+          <div className={styles['recipe-card']}>
+            <div className={styles['recipe-card-header']}>
+              <h3> {recipes_ingredients}</h3>
+            </div>
+            <div className={styles['recipe-card-content']}>
+              {recipe.ingredients}
+            </div>
+          </div>
+          <div className={styles['recipe-card']}>
+            <div className={styles['recipe-card-header']}>
+              <h3> {recipes_steps}</h3>
+            </div>
+            <div className={styles['recipe-card-content']}>{recipe.steps}</div>
+          </div>
+        </div>
+        <div className={styles['recipe-card']}>
+          <div className={styles['recipe-card-header']}>
+            <h3> {recipes_notes}</h3>
+          </div>
+          <div className={styles['recipe-card-content']}>{recipe.notes}</div>
+        </div>
+      </div>
+    </Layout>
   );
 }
 
