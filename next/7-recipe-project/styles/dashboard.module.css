@@ -174,6 +174,7 @@
   border-radius: 10px;
   font-weight: bold;
   font-size: 1.2rem;
-  background: lightgreen;
+  background: var(--secondary-color);
+  font-family: var(--changa-font);
   color: #333;
 }
