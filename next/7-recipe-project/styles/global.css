@@ -2,9 +2,15 @@ body {
   direction: rtl;
 }
 
+/* Theme Colors */
+:root {
+  --primary-color: #6eae50;
+  --secondary-color: #f29f05;
+}
+
 /* Page Header Styles */
 .page-header {
-  background: green;
+  background: var(--primary-color);
   width: 40%;
   height: 100px;
   margin-left: auto;
