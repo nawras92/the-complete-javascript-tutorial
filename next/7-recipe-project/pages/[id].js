@@ -1,3 +1,4 @@
+import ReactMarkdown from 'react-markdown';
 import { getOne } from '../api/recipe';
 import Layout from '../components/Layout';
 import Recipe from '../components/Recipe';
@@ -17,15 +18,19 @@ export default function HomePage(props) {
             <div className={styles['recipe-card-header']}>
               <h3> {recipes_ingredients}</h3>
             </div>
+
             <div className={styles['recipe-card-content']}>
-              {recipe.ingredients}
+              <ReactMarkdown>{recipe.ingredients}</ReactMarkdown>
             </div>
           </div>
           <div className={styles['recipe-card']}>
             <div className={styles['recipe-card-header']}>
               <h3> {recipes_steps}</h3>
             </div>
-            <div className={styles['recipe-card-content']}>{recipe.steps}</div>
+
+            <div className={styles['recipe-card-content']}>
+              <ReactMarkdown>{recipe.steps}</ReactMarkdown>
+            </div>
           </div>
         </div>
         <div className={styles['recipe-card']}>

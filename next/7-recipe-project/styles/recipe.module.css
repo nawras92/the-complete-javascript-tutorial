@@ -46,6 +46,9 @@
   }
 }
 .recipe-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   flex: 1 0 50%;
   text-align: center;
   border-bottom-left-radius: 10px;
@@ -143,6 +146,13 @@
 }
 .recipe-card-content {
   padding: 1rem;
+}
+
+.recipe-card-content li {
+  list-style: number;
+}
+.recipe-card-content strong {
+  font-weight: bold;
 }
 
 .recipe-card-header {
