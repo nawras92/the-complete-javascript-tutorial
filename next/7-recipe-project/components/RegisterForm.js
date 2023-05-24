@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import styles from '../styles/dashboard.module.css';
+import { authentication_page_email_label } from '../messages';
+import { authentication_page_password_label } from '../messages';
+import { authentication_page_username_label } from '../messages';
+import { authentication_page_register_button } from '../messages';
 
 export default function RegisterForm() {
   const router = useRouter();
@@ -55,7 +59,7 @@ export default function RegisterForm() {
       <form className={styles['form']} onSubmit={handleSubmit}>
         <div className={styles['form-group']}>
           <label className={styles['label']} htmlFor="email">
-            Email
+            {authentication_page_email_label}
           </label>
           <input
             className={styles['input']}
@@ -67,7 +71,7 @@ export default function RegisterForm() {
         </div>
         <div className={styles['form-group']}>
           <label className={styles['label']} htmlFor="username">
-            Username
+            {authentication_page_username_label}
           </label>
           <input
             className={styles['input']}
@@ -79,7 +83,7 @@ export default function RegisterForm() {
         </div>
         <div className={styles['form-group']}>
           <label className={styles['label']} htmlFor="password">
-            Password
+            {authentication_page_password_label}
           </label>
           <input
             className={styles['input']}
@@ -91,7 +95,7 @@ export default function RegisterForm() {
         </div>
         <div className={styles['form-group']}>
           <button className={`${styles['button']} ${styles['submit-button']}`}>
-            Register
+            {authentication_page_register_button}
           </button>
         </div>
       </form>
