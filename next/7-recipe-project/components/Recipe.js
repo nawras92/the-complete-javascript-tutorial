@@ -1,4 +1,10 @@
 import styles from '../styles/recipe.module.css';
+import { recipes_updated_at } from '../messages';
+import { recipes_total_time } from '../messages';
+import { recipes_preparation_time } from '../messages';
+import { recipes_cook_time } from '../messages';
+import { recipes_servings } from '../messages';
+import { recipes_meal } from '../messages';
 
 export default function Recipe(props) {
   const {
@@ -29,27 +35,27 @@ export default function Recipe(props) {
 
         <div className={styles['recipe-meta']}>
           <p className={styles['recipe-meta-item']}>
-            <span>Updated at</span>
+            <span>{recipes_updated_at}</span>
             <span>{updatedAt}</span>
           </p>
           <p className={styles['recipe-meta-item']}>
-            <span>meal</span>
+            <span>{recipes_meal}</span>
             <span>{meal}</span>
           </p>
           <p className={styles['recipe-meta-item']}>
-            <span>servings</span>
+            <span>{recipes_servings}</span>
             <span>{servings}</span>
           </p>
           <p className={styles['recipe-meta-item']}>
-            <span>cook time</span>
+            <span>{recipes_cook_time}</span>
             <span>{cook_time}</span>
           </p>
           <p className={styles['recipe-meta-item']}>
-            <span>preparation time</span>
+            <span>{recipes_preparation_time}</span>
             <span>{preparation_time}</span>
           </p>
           <p className={styles['recipe-meta-item']}>
-            <span>total time</span>
+            <span>{recipes_total_time}</span>
             <span>{total_time}</span>
           </p>
         </div>

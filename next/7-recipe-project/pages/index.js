@@ -2,12 +2,12 @@ import { getAll } from '../api/recipe';
 import Recipe from '../components/Recipe';
 import Layout from '../components/Layout';
 import styles from '../styles/recipe.module.css';
+import { homepage_title } from '../messages';
 
 export default function HomePage(props) {
   const { recipes } = props;
-  const title = 'this is homepage';
   return (
-    <Layout title={title}>
+    <Layout title={homepage_title}>
       <div className="page-container">
         <div className={styles['recipes-container']}>
           {recipes &&
