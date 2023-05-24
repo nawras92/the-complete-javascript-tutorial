@@ -1,4 +1,5 @@
 import styles from '../styles/recipe.module.css';
+import { formatDate } from '../utils/helpers';
 import { recipes_updated_at } from '../messages';
 import { recipes_total_time } from '../messages';
 import { recipes_preparation_time } from '../messages';
@@ -36,7 +37,7 @@ export default function Recipe(props) {
         <div className={styles['recipe-meta']}>
           <p className={styles['recipe-meta-item']}>
             <span>{recipes_updated_at}</span>
-            <span>{updatedAt}</span>
+            <span>{formatDate(updatedAt)}</span>
           </p>
           <p className={styles['recipe-meta-item']}>
             <span>{recipes_meal}</span>
