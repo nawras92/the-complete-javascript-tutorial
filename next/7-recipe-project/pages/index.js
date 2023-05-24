@@ -1,6 +1,7 @@
 import { getAll } from '../api/recipe';
 import Recipe from '../components/Recipe';
 import Layout from '../components/Layout';
+import styles from '../styles/recipe.module.css';
 
 export default function HomePage(props) {
   const { recipes } = props;
@@ -8,7 +9,7 @@ export default function HomePage(props) {
   return (
     <Layout title={title}>
       <div className="page-container">
-        <div className="recipes-container">
+        <div className={styles['recipes-container']}>
           {recipes &&
             recipes.map((r) => {
               return <Recipe {...r} key={r.id} />;
