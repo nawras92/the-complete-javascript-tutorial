@@ -103,3 +103,28 @@
   cursor: pointer;
   opacity: 0.7;
 }
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.error-text {
+  display: block;
+  background: tomato;
+  color: #fff;
+  text-align: center;
+  margin: 1rem auto;
+  padding: 0.5rem;
+  opacity: 0.9;
+  font-size: 0.7rem;
+  font-weight: bold;
+  border-radius: 5px;
+}
+.message {
+  background: orange;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}

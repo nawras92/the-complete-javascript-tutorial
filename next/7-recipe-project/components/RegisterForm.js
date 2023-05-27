@@ -5,6 +5,8 @@ import { authentication_page_email_label } from '../messages';
 import { authentication_page_password_label } from '../messages';
 import { authentication_page_username_label } from '../messages';
 import { authentication_page_register_button } from '../messages';
+import { validateRegisterForm } from '../utils/helpers';
+import { sanitizeString } from '../utils/helpers';
 
 export default function RegisterForm() {
   const router = useRouter();
@@ -14,6 +16,8 @@ export default function RegisterForm() {
     username: '',
     password: '',
   });
+  const [errors, setErrors] = useState({});
+  const [valid, setValid] = useState(false);
 
   // Handle change
   const handleChange = (e) => {
@@ -22,40 +26,75 @@ export default function RegisterForm() {
       ...registerData,
       [name]: value,
     });
+    //Validation
+    const { isValid, errors: myErrors } = validateRegisterForm({
+      ...registerData,
+      [name]: value,
+    });
+    if (isValid) {
+      setValid(true);
+      setErrors({
+        ...errors,
+        [name]: '',
+      });
+    } else {
+      setValid(false);
+      setErrors({
+        ...errors,
+        [name]: myErrors[name],
+      });
+    }
   };
 
   // Handle Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Send Register  Request to backend
-    try {
-      const registerResponse = await fetch('/api/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(registerData),
-      });
-      const dataReturned = await registerResponse.json();
-      const { ok, message } = dataReturned;
-      if (ok) {
-        // redirect to dashboard
-        setMessage(message);
-        router.push('/login');
-        window.location.reload();
-      }
-      if (!ok) {
-        setMessage(message);
+    // Sanitize String
+    const sanitizedData = {
+      email: sanitizeString(registerData?.email),
+      username: sanitizeString(registerData?.username),
+      password: sanitizeString(registerData?.password),
+    };
+    // validate sanitized Data
+    const { isValid, errors: myErrors } = validateRegisterForm(sanitizedData);
+    if (isValid) {
+      setValid(true);
+    } else {
+      setValid(false);
+      setErrors(myErrors);
+    }
 
-        throw new Error(message);
+    // Send Register  Request to backend
+    if (isValid) {
+      try {
+        const registerResponse = await fetch('/api/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(sanitizedData),
+        });
+        const dataReturned = await registerResponse.json();
+        const { ok, message } = dataReturned;
+        if (ok) {
+          // redirect to dashboard
+          setMessage(message);
+          router.push('/login');
+          window.location.reload();
+        }
+        if (!ok) {
+          setMessage(message);
+
+          throw new Error(message);
+        }
+      } catch (e) {
+        console.log(e);
       }
-    } catch (e) {
-      console.log(e);
     }
   };
   return (
     <div className={styles['form-wrapper']}>
-      <p className="message">{message}</p>
+      {message && <p className={styles['message']}>{message}</p>}
       <form className={styles['form']} onSubmit={handleSubmit}>
         <div className={styles['form-group']}>
           <label className={styles['label']} htmlFor="email">
@@ -68,6 +107,9 @@ export default function RegisterForm() {
             value={registerData.email}
             onChange={handleChange}
           />
+          {errors?.email && (
+            <p className={styles['error-text']}>{errors.email}</p>
+          )}
         </div>
         <div className={styles['form-group']}>
           <label className={styles['label']} htmlFor="username">
@@ -80,6 +122,9 @@ export default function RegisterForm() {
             value={registerData.username}
             onChange={handleChange}
           />
+          {errors?.username && (
+            <p className={styles['error-text']}>{errors.username}</p>
+          )}
         </div>
         <div className={styles['form-group']}>
           <label className={styles['label']} htmlFor="password">
@@ -92,9 +137,15 @@ export default function RegisterForm() {
             value={registerData.password}
             onChange={handleChange}
           />
+          {errors?.password && (
+            <p className={styles['error-text']}>{errors.password}</p>
+          )}
         </div>
         <div className={styles['form-group']}>
-          <button className={`${styles['button']} ${styles['submit-button']}`}>
+          <button
+            disabled={!valid}
+            className={`${styles['button']} ${styles['submit-button']}`}
+          >
             {authentication_page_register_button}
           </button>
         </div>

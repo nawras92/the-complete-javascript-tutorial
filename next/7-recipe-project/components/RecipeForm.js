@@ -25,6 +25,8 @@ import { recipe_meal_lunch } from '../messages';
 import { recipe_meal_dinner } from '../messages';
 import { recipe_submit_add } from '../messages';
 import { recipe_submit_edit } from '../messages';
+import { validateRecipeForm } from '../utils/helpers';
+import { sanitizeString } from '../utils/helpers';
 
 export default function RecipeForm(props) {
   const {
@@ -39,41 +41,79 @@ export default function RecipeForm(props) {
   const [formData, setFormData] = useState(initialValues);
   const [message, setMessage] = useState('');
 
+  const [errors, setErrors] = useState({});
+  const [valid, setValid] = useState(false);
+
   // Handle Change
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
+    //Validation
+    const { isValid, errors: myErrors } = validateRecipeForm({
+      ...formData,
+      [name]: value,
+    });
+    if (isValid) {
+      setValid(true);
+      setErrors({
+        ...errors,
+        [name]: '',
+      });
+    } else {
+      setValid(false);
+      setErrors({
+        ...errors,
+        [name]: myErrors[name],
+      });
+    }
   };
 
   // Handle Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage('');
-    try {
-      const response = await fetch(apiPoint, {
-        method,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ data: formData, id: args?.id }),
-      });
-      const dataReturned = await response.json();
-      const { ok, message } = dataReturned;
-      if (!ok) {
+    // Sanitize String
+    const sanitizedData = {
+      ...formData,
+      title: sanitizeString(formData?.title),
+      description: sanitizeString(formData?.description),
+    };
+    // validate sanitized Data
+    const { isValid, errors: myErrors } = validateRecipeForm(sanitizedData);
+    if (isValid) {
+      setValid(true);
+    } else {
+      setValid(false);
+      setErrors(myErrors);
+    }
+
+    if (isValid) {
+      try {
+        const response = await fetch(apiPoint, {
+          method,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ data: sanitizedData, id: args?.id }),
+        });
+        const dataReturned = await response.json();
+        const { ok, message } = dataReturned;
+        if (!ok) {
+          setMessage(message);
+          throw new Error(message);
+        }
+        // Success
         setMessage(message);
-        throw new Error(message);
+        console.log(formData);
+      } catch (e) {
+        console.log('Error: ', e);
       }
-      // Success
-      setMessage(message);
-      console.log(formData);
-    } catch (e) {
-      console.log('Error: ', e);
     }
   };
   return (
     <div className={styles['form-container']}>
       <form className={styles['form']} onSubmit={handleSubmit}>
-        <div className={styles['message']}>{message}</div>
+        {message && <div className={styles['message']}>{message}</div>}
         <div className={styles['form-group']}>
           <label htmlFor="title">{recipe_title_field}</label>
           <input
@@ -82,6 +122,9 @@ export default function RecipeForm(props) {
             value={formData.title}
             onChange={handleChange}
           />
+          {errors?.title && (
+            <p className={styles['error-text']}>{errors.title}</p>
+          )}
           <p className={styles['helper-text']}>{recipe_title_helper_text} </p>
         </div>
         <div className={styles['form-group']}>
@@ -92,6 +135,9 @@ export default function RecipeForm(props) {
             value={formData.description}
             onChange={handleChange}
           ></textarea>
+          {errors?.description && (
+            <p className={styles['error-text']}>{errors.description}</p>
+          )}
           <p className={styles['helper-text']}>
             {recipe_description_helper_text}
           </p>
@@ -174,6 +220,9 @@ export default function RecipeForm(props) {
             <option value="Lunch">{recipe_meal_lunch}</option>
             <option value="Dinner">{recipe_meal_dinner}</option>
           </select>
+          {errors?.meal && (
+            <p className={styles['error-text']}>{errors.meal}</p>
+          )}
           <p className={styles['helper-text']}>{recipe_meal_helper_text}</p>
         </div>
         <div className={styles['form-group']}>
@@ -188,7 +237,7 @@ export default function RecipeForm(props) {
         </div>
 
         <div className={styles['form-group']}>
-          <button className={styles['button']} type="submit">
+          <button disabled={!valid} className={styles['button']} type="submit">
             {editForm ? recipe_submit_edit : recipe_submit_add}
           </button>
         </div>

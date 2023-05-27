@@ -78,3 +78,15 @@ export const recipe_submit_edit = 'تعديل الوصفة';
 export const recipe_meal_breakfast = 'الإفطار';
 export const recipe_meal_lunch = 'الغذاء';
 export const recipe_meal_dinner = 'العشاء';
+/* Validation Messages */
+export const email_field_required = 'البريد الإلكتروني مطلوب';
+export const username_field_required = 'اسم المستخدم مطلوب';
+export const password_field_required = 'يجب إدخال كلمة المرور';
+export const title_field_required = 'اسم الوصفة مطلوب';
+export const meal_field_required = 'حقل الوجبة مطلوب';
+export const description_field_required = 'حقل الوصف مطلوب';
+export const title_length = 'يجب أن يتكون اسم الوصفة من 5 إلى 60 محرف';
+export const description_length = 'يجب أن يتكون الوصف من 10 إلى 160 محرف';
+export const password_length = 'يجب أن تتكون كلمة المرورمن 8 محارف على الأقل';
+export const username_length = 'يجب أن يتكون اسم المستخدم من 3 محارف على الأقل';
+export const email_not_valid = 'البريد الإلكتروني غير صالح';
