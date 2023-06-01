@@ -128,3 +128,35 @@
   margin-bottom: 1rem;
   opacity: 0.8;
 }
+
+.upload-button,
+.delete-button {
+  display: inline-block;
+  background: var(--primary-color);
+  outline: none;
+  border: none;
+  color: #fff;
+  margin: 0.1rem 1rem;
+  padding: 0.3rem 1rem;
+  border-radius: 10px;
+  opacity: 0.7;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: var(--changa-font);
+  transition: all 1s ease-in;
+}
+.upload-button:hover,
+.delete-button:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.delete-button {
+  background: tomato;
+  font-size: 0.8rem;
+}
+
+.preview-image {
+  display: block;
+  max-width: 100%;
+}
