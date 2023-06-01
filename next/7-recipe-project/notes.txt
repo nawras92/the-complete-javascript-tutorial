@@ -1,0 +1,4 @@
+Things to consider:
+1- User can edit/delete other users' recipes - Permission/Security Issue
+2- Non-authenticated Users can upload images - Permission/Security Issue
+
