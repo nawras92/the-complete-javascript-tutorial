@@ -109,7 +109,8 @@
   cursor: not-allowed;
 }
 
-.error-text {
+.error-text,
+.success-text {
   display: block;
   background: tomato;
   color: #fff;
@@ -120,6 +121,9 @@
   font-size: 0.7rem;
   font-weight: bold;
   border-radius: 5px;
+}
+.success-text {
+  background: green;
 }
 .message {
   background: orange;

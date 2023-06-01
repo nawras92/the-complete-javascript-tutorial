@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { uploadThumbnail } from '../api/recipe';
+import { BACKEND_URL } from '../my-config';
 import styles from '../styles/recipe-form.module.css';
 import messages from '../messages/recipe-form';
 import { validateRecipeForm } from '../utils/helpers';
@@ -12,6 +14,7 @@ export default function RecipeForm(props) {
     args,
     editForm = false,
   } = props;
+  console.log(initialValues);
 
   // Manage State
   const [formData, setFormData] = useState(initialValues);
@@ -88,9 +91,50 @@ export default function RecipeForm(props) {
   };
   /* Handle Thumbnail*/
   const [thumbnail, setThumbnail] = useState(null);
-  const handleUploadThumbnail = (e) => {
+  const [thumbnailMessage, setThumbnailMessage] = useState('');
+  // User Select image
+  const handleChangeThumbnail = (e) => {
     const files = e.target.files;
     setThumbnail(files[0]);
+  };
+  // User clicks on upload image
+  const handleUploadThumbnail = async (e) => {
+    e.preventDefault();
+    // Create form Data
+    const form = new FormData();
+    form.append('files', thumbnail);
+    try {
+      const response = await fetch(uploadThumbnail, {
+        method: 'POST',
+        body: form,
+      });
+      const data = await response.json();
+      const { error } = data;
+      if (!response.ok) {
+        setErrors({
+          ...errors,
+          thumbnail: messages['thumbnail_error'],
+        });
+        throw new Error(`${error.name}: ${error.message}`);
+      }
+      //Success
+      //handle here
+      //1- Remove Errors
+      setErrors({
+        ...errors,
+        thumbnail: '',
+      });
+      //2- get the thumbnail id
+      const thumbnailId = data[0]?.id;
+      setFormData({
+        ...formData,
+        thumbnail: thumbnailId,
+      });
+      // 3- set success message
+      setThumbnailMessage(messages['thumbnail_uploaded']);
+    } catch (e) {
+      console.log(e);
+    }
   };
   return (
     <div className={styles['form-container']}>
@@ -132,11 +176,17 @@ export default function RecipeForm(props) {
             type="file"
             name="thumbnail"
             accept="images/*"
-            onChange={handleUploadThumbnail}
+            onChange={handleChangeThumbnail}
           />
-          <button className={styles['upload-button']}>
+          <button
+            className={styles['upload-button']}
+            onClick={handleUploadThumbnail}
+          >
             {messages['thumbnail_upload']}
           </button>
+          {thumbnailMessage && (
+            <p className={styles['success-text']}>{thumbnailMessage}</p>
+          )}
           {errors?.thumbnail && (
             <p className={styles['error-text']}>{errors.thumbnail}</p>
           )}
@@ -156,6 +206,17 @@ export default function RecipeForm(props) {
               <img
                 className={styles['preview-image']}
                 src={window.URL.createObjectURL(thumbnail)}
+                alt="thumbnail"
+              />
+            </>
+          )}
+          {/* Recipe already added thumbnail */}
+          {formData?.thumbnail?.data && (
+            <>
+              <p>{messages['old_thumbnail']}</p>
+              <img
+                className={styles['preview-image']}
+                src={`${BACKEND_URL}${formData?.thumbnail?.data?.attributes?.url}`}
                 alt="thumbnail"
               />
             </>

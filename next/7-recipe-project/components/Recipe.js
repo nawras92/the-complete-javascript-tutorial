@@ -1,3 +1,5 @@
+import Image from 'next/image';
+import { BACKEND_URL } from '../my-config';
 import styles from '../styles/recipe.module.css';
 import { formatDate } from '../utils/helpers';
 import { recipes_updated_at } from '../messages';
@@ -18,15 +20,31 @@ export default function Recipe(props) {
     total_time,
     servings,
     updatedAt,
+    thumbnail,
     single = false,
   } = props;
   return (
     <div className={styles['recipe']}>
-      <img
-        src="https://placehold.co/200x200"
-        alt="thumbnail"
-        className={styles['recipe-thumbnail']}
-      />
+      {!thumbnail?.data && (
+        <Image
+          src="/images/placeholder.svg"
+          alt="thumbnail"
+          className={styles['recipe-thumbnail']}
+          width={200}
+          height={200}
+        />
+      )}
+      {thumbnail?.data && (
+        <Image
+          src={BACKEND_URL + thumbnail?.data?.attributes?.url}
+          alt={
+            thumbnail?.data?.attributes?.alternativeText || `${title} Thumbnail`
+          }
+          width={thumbnail?.data?.attributes?.width}
+          height={thumbnail?.data?.attributes?.height}
+          className={styles['recipe-thumbnail']}
+        />
+      )}
       <div className={styles['recipe-details']}>
         {!single && (
           <h3 className={styles['recipe-title']}>
