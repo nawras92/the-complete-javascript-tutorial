@@ -1,30 +1,6 @@
 import { useState } from 'react';
 import styles from '../styles/recipe-form.module.css';
-import { recipe_title_field } from '../messages';
-import { recipe_title_helper_text } from '../messages';
-import { recipe_description_field } from '../messages';
-import { recipe_description_helper_text } from '../messages';
-import { recipe_steps_field } from '../messages';
-import { recipe_steps_helper_text } from '../messages';
-import { recipe_ingredients_field } from '../messages';
-import { recipe_ingredients_helper_text } from '../messages';
-import { recipe_notes_field } from '../messages';
-import { recipe_notes_helper_text } from '../messages';
-import { recipe_cook_time_field } from '../messages';
-import { recipe_cook_time_helper_text } from '../messages';
-import { recipe_preparation_time_field } from '../messages';
-import { recipe_preparation_time_helper_text } from '../messages';
-import { recipe_total_time_field } from '../messages';
-import { recipe_total_time_helper_text } from '../messages';
-import { recipe_servings_field } from '../messages';
-import { recipe_servings_helper_text } from '../messages';
-import { recipe_meal_field } from '../messages';
-import { recipe_meal_helper_text } from '../messages';
-import { recipe_meal_breakfast } from '../messages';
-import { recipe_meal_lunch } from '../messages';
-import { recipe_meal_dinner } from '../messages';
-import { recipe_submit_add } from '../messages';
-import { recipe_submit_edit } from '../messages';
+import messages from '../messages/recipe-form';
 import { validateRecipeForm } from '../utils/helpers';
 import { sanitizeString } from '../utils/helpers';
 
@@ -110,12 +86,18 @@ export default function RecipeForm(props) {
       }
     }
   };
+  /* Handle Thumbnail*/
+  const [thumbnail, setThumbnail] = useState(null);
+  const handleUploadThumbnail = (e) => {
+    const files = e.target.files;
+    setThumbnail(files[0]);
+  };
   return (
     <div className={styles['form-container']}>
       <form className={styles['form']} onSubmit={handleSubmit}>
         {message && <div className={styles['message']}>{message}</div>}
         <div className={styles['form-group']}>
-          <label htmlFor="title">{recipe_title_field}</label>
+          <label htmlFor="title">{messages['title_field']}</label>
           <input
             type="text"
             name="title"
@@ -125,10 +107,12 @@ export default function RecipeForm(props) {
           {errors?.title && (
             <p className={styles['error-text']}>{errors.title}</p>
           )}
-          <p className={styles['helper-text']}>{recipe_title_helper_text} </p>
+          <p className={styles['helper-text']}>
+            {messages['title_helper_text']}
+          </p>
         </div>
         <div className={styles['form-group']}>
-          <label htmlFor="description">{recipe_description_field}</label>
+          <label htmlFor="description">{messages['description_field']}</label>
           <textarea
             type="text"
             name="description"
@@ -139,21 +123,58 @@ export default function RecipeForm(props) {
             <p className={styles['error-text']}>{errors.description}</p>
           )}
           <p className={styles['helper-text']}>
-            {recipe_description_helper_text}
+            {messages['description_helper_text']}
           </p>
         </div>
         <div className={styles['form-group']}>
-          <label htmlFor="steps">{recipe_steps_field}</label>
+          <label htmlFor="thumbnail">{messages['thumbnail_field']}</label>
+          <input
+            type="file"
+            name="thumbnail"
+            accept="images/*"
+            onChange={handleUploadThumbnail}
+          />
+          <button className={styles['upload-button']}>
+            {messages['thumbnail_upload']}
+          </button>
+          {errors?.thumbnail && (
+            <p className={styles['error-text']}>{errors.thumbnail}</p>
+          )}
+          <p className={styles['helper-text']}>
+            {messages['thumbnail_helper_text']}
+          </p>
+          {/* User selected a thumbnail */}
+          {thumbnail && (
+            <>
+              <p>{messages['new_thumbnail']}</p>
+              <button
+                className={styles['delete-button']}
+                onClick={() => setThumbnail(null)}
+              >
+                {messages['thumbnail_delete']}
+              </button>
+              <img
+                className={styles['preview-image']}
+                src={window.URL.createObjectURL(thumbnail)}
+                alt="thumbnail"
+              />
+            </>
+          )}
+        </div>
+        <div className={styles['form-group']}>
+          <label htmlFor="steps">{messages['steps_field']}</label>
           <textarea
             type="text"
             name="steps"
             value={formData.steps}
             onChange={handleChange}
           ></textarea>
-          <p className={styles['helper-text']}>{recipe_steps_helper_text}</p>
+          <p className={styles['helper-text']}>
+            {messages['steps_helper_text']}
+          </p>
         </div>
         <div className={styles['form-group']}>
-          <label htmlFor="ingredients">{recipe_ingredients_field}</label>
+          <label htmlFor="ingredients">{messages['ingredients_field']}</label>
           <textarea
             type="text"
             name="ingredients"
@@ -161,11 +182,11 @@ export default function RecipeForm(props) {
             onChange={handleChange}
           ></textarea>
           <p className={styles['helper-text']}>
-            {recipe_ingredients_helper_text}
+            {messages['ingredients_helper_text']}
           </p>
         </div>
         <div className={styles['form-group']}>
-          <label htmlFor="cook_time">{recipe_cook_time_field}</label>
+          <label htmlFor="cook_time">{messages['cook_time_field']}</label>
           <input
             type="number"
             name="cook_time"
@@ -173,12 +194,12 @@ export default function RecipeForm(props) {
             onChange={handleChange}
           />
           <p className={styles['helper-text']}>
-            {recipe_cook_time_helper_text}
+            {messages['cook_time_helper_text']}
           </p>
         </div>
         <div className={styles['form-group']}>
           <label htmlFor="preparation_time">
-            {recipe_preparation_time_field}{' '}
+            {messages['preparation_time_field']}
           </label>
           <input
             type="number"
@@ -187,11 +208,11 @@ export default function RecipeForm(props) {
             onChange={handleChange}
           />
           <p className={styles['helper-text']}>
-            {recipe_preparation_time_helper_text}
+            {messages['preparation_time_helper_text']}
           </p>
         </div>
         <div className={styles['form-group']}>
-          <label htmlFor="total_time">{recipe_total_time_field}</label>
+          <label htmlFor="total_time">{messages['total_time_field']}</label>
           <input
             type="number"
             name="total_time"
@@ -199,46 +220,52 @@ export default function RecipeForm(props) {
             onChange={handleChange}
           />
           <p className={styles['helper-text']}>
-            {recipe_total_time_helper_text}
+            {messages['total_time_helper_text']}
           </p>
         </div>
         <div className={styles['form-group']}>
-          <label htmlFor="servings">{recipe_servings_field}</label>
+          <label htmlFor="servings">{messages['servings_field']}</label>
           <input
             type="number"
             name="servings"
             value={formData.servings}
             onChange={handleChange}
           />
-          <p className={styles['helper-text']}>{recipe_servings_helper_text}</p>
+          <p className={styles['helper-text']}>
+            {messages['servings_helper_text']}
+          </p>
         </div>
 
         <div className={styles['form-group']}>
-          <label htmlFor="meal">{recipe_meal_field}</label>
+          <label htmlFor="meal">{messages['field_meal']}</label>
           <select name="meal" value={formData.meal} onChange={handleChange}>
-            <option value="Breakfast">{recipe_meal_breakfast}</option>
-            <option value="Lunch">{recipe_meal_lunch}</option>
-            <option value="Dinner">{recipe_meal_dinner}</option>
+            <option value="Breakfast">{messages['meal_breakfast']}</option>
+            <option value="Lunch">{messages['meal_lunch']}</option>
+            <option value="Dinner">{messages['meal_dinner']}</option>
           </select>
           {errors?.meal && (
             <p className={styles['error-text']}>{errors.meal}</p>
           )}
-          <p className={styles['helper-text']}>{recipe_meal_helper_text}</p>
+          <p className={styles['helper-text']}>
+            {messages['meal_helper_text']}
+          </p>
         </div>
         <div className={styles['form-group']}>
-          <label htmlFor="notes">{recipe_notes_field}</label>
+          <label htmlFor="notes">{messages['notes_field']}</label>
           <textarea
             type="text"
             name="notes"
             value={formData.notes}
             onChange={handleChange}
           ></textarea>
-          <p className={styles['helper-text']}>{recipe_notes_helper_text}</p>
+          <p className={styles['helper-text']}>
+            {messages['notes_helper_text']}
+          </p>
         </div>
 
         <div className={styles['form-group']}>
           <button disabled={!valid} className={styles['button']} type="submit">
-            {editForm ? recipe_submit_edit : recipe_submit_add}
+            {editForm ? messages['submit_edit'] : messages['submit_add']}
           </button>
         </div>
       </form>
