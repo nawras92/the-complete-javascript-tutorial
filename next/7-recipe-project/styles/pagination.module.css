@@ -1,0 +1,27 @@
+.pagination {
+  max-width: 60%;
+  margin: 2rem auto;
+  background: var(--primary-color);
+  text-align: center;
+  height: 10px;
+}
+
+.page-item {
+  background: white;
+  padding: 0.5rem;
+  border: 1px solid var(--primary-color);
+  text-decoration: none;
+  color: #333;
+}
+.page-item:hover {
+  background: #f4f4f4;
+}
+
+.active {
+  background: var(--secondary-color);
+}
+
+.disabled {
+  cursor: not-allowed;
+  background: gray;
+}
