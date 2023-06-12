@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import styles from '../styles/pagination.module.css';
 import messages from '../messages/pagination.js';
@@ -14,6 +15,10 @@ const Pagination = (props) => {
   const nextPage =
     currentPage >= totalPages ? pageNumbers[0] : parseInt(currentPage) + 1;
 
+  // Configure Router
+  const router = useRouter();
+  const query = router.query;
+
   return (
     <nav style={{ marginBottom: '10rem' }} className={styles['pagination']}>
       <Link
@@ -23,6 +28,7 @@ const Pagination = (props) => {
         href={{
           pathname: '/',
           query: {
+            ...query,
             page: previousPage,
           },
         }}
@@ -35,6 +41,7 @@ const Pagination = (props) => {
             href={{
               pathname: '/',
               query: {
+                ...query,
                 page: i,
               },
             }}
@@ -53,6 +60,7 @@ const Pagination = (props) => {
         href={{
           pathname: '/',
           query: {
+            ...query,
             page: nextPage,
           },
         }}

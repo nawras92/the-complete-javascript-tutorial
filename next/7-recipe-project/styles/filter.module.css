@@ -1,0 +1,46 @@
+.container {
+  background: #f4f4f4;
+  max-width: 60%;
+  margin: 1rem auto;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 700px) {
+  .container {
+    max-width: 95%;
+  }
+}
+
+.section {
+  border-bottom: 1px dotted var(--secondary-color);
+  padding-bottom: 1rem;
+}
+
+.section-title {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.section-button {
+  display: inline-block;
+  outline: none;
+  border: none;
+  background: white;
+  margin: 1rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #333;
+  transition: all 1s ease-in;
+}
+
+.section-button:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px 7px #333;
+}
+
+.active {
+  background: var(--primary-color);
+  color: white;
+}

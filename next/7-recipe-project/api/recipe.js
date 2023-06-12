@@ -5,6 +5,8 @@ export const accessToken =
 export const getAll = `${baseUrl}/api/recipes?populate=thumbnail`;
 export const getAllWithPagination = (requestedPage, pageSize) =>
   `${baseUrl}/api/recipes?populate=thumbnail&pagination[page]=${requestedPage}&pagination[pageSize]=${pageSize}&sort=updatedAt:desc`;
+export const getAllWithQuery = (query) =>
+  `${baseUrl}/api/recipes?populate=thumbnail&${query}`;
 export const getOne = (id) => `${baseUrl}/api/recipes/${id}?populate=thumbnail`;
 export const addOne = `${baseUrl}/api/recipes/`;
 export const deleteOne = (id) => `${baseUrl}/api/recipes/${id}`;
