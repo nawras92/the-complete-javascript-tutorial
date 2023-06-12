@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "next": "^13.3.4",
+    "qs": "^6.11.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^8.0.7"
