@@ -22,6 +22,12 @@
   margin-top: 1rem;
 }
 
+.section-text {
+  color: #333;
+  opacity: 0.7;
+  font-size: 0.8rem;
+}
+
 .section-button {
   display: inline-block;
   outline: none;
@@ -43,4 +49,26 @@
 .active {
   background: var(--primary-color);
   color: white;
+}
+
+.button-danger {
+  background: tomato;
+  opacity: 0.6;
+  color: white;
+}
+
+.button-success {
+  background: indigo;
+  opacity: 0.5;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.section-input {
+  outline: none;
+  border: none;
+  background: none;
+  border-bottom: 2px solid var(--primary-color);
+  font-size: 1rem;
 }

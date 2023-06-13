@@ -33,9 +33,37 @@ export async function getServerSideProps(context) {
   const pageSize = 4;
   const currentPage = context?.query?.page || 1;
   const sort = context?.query?.sort || 'desc';
+  const searchTerm = context?.query?.searchTerm || '';
+  const meal = context?.query?.meal || '';
+  const minDuration = context?.query?.minDuration || 5;
+  const maxDuration = context?.query?.maxDuration || 240;
 
   const queryParams = {
     sort: [`updatedAt:${sort}`],
+    filters: {
+      $or: [
+        {
+          title: {
+            $contains: searchTerm,
+          },
+        },
+        {
+          description: {
+            $contains: searchTerm,
+          },
+        },
+        {
+          meal: {
+            $eqi: meal,
+          },
+        },
+        {
+          total_time: {
+            $between: [minDuration, maxDuration],
+          },
+        },
+      ],
+    },
     pagination: {
       pageSize,
       page: currentPage,
