@@ -14,16 +14,22 @@ export default function HomePage(props) {
   const { currentPage, pageCount } = props;
   return (
     <Layout title={homepage_title}>
-      <FilterBox />
-      <div className="page-container">
-        <div className={styles['recipes-container']}>
-          {recipes &&
-            recipes.map((r) => {
-              return <Recipe {...r} key={r.id} />;
-            })}
+      <div className={styles['wrapper']}>
+        <div className={styles['content']}>
+          <div className="page-container">
+            <div className={styles['recipes-container']}>
+              {recipes &&
+                recipes.map((r) => {
+                  return <Recipe {...r} key={r.id} />;
+                })}
+            </div>
+          </div>
+          <Pagination totalPages={pageCount} currentPage={currentPage} />
+        </div>
+        <div className={styles['sidebar']}>
+          <FilterBox />
         </div>
       </div>
-      <Pagination totalPages={pageCount} currentPage={currentPage} />
     </Layout>
   );
 }
@@ -33,36 +39,40 @@ export async function getServerSideProps(context) {
   const pageSize = 4;
   const currentPage = context?.query?.page || 1;
   const sort = context?.query?.sort || 'desc';
-  const searchTerm = context?.query?.searchTerm || '';
-  const meal = context?.query?.meal || '';
-  const minDuration = context?.query?.minDuration || 5;
-  const maxDuration = context?.query?.maxDuration || 240;
+  const searchTerm = context?.query?.searchTerm;
+  const meal = context?.query?.meal;
+  const minDuration = context?.query?.minDuration;
+  const maxDuration = context?.query?.maxDuration;
 
   const queryParams = {
     sort: [`updatedAt:${sort}`],
     filters: {
-      $or: [
-        {
-          title: {
-            $contains: searchTerm,
-          },
+      $and: [
+        searchTerm && {
+          $or: [
+            {
+              title: {
+                $contains: searchTerm,
+              },
+            },
+            {
+              description: {
+                $contains: searchTerm,
+              },
+            },
+          ],
         },
-        {
-          description: {
-            $contains: searchTerm,
-          },
-        },
-        {
+        meal && {
           meal: {
             $eqi: meal,
           },
         },
-        {
+        (minDuration || maxDuration) && {
           total_time: {
             $between: [minDuration, maxDuration],
           },
         },
-      ],
+      ].filter(Boolean),
     },
     pagination: {
       pageSize,
@@ -82,13 +92,9 @@ export async function getServerSideProps(context) {
     ...r.attributes,
   }));
 
-  const sortedRecipes = recipes.sort(
-    (a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)
-  );
-
   return {
     props: {
-      recipes: sortedRecipes,
+      recipes,
       currentPage,
       pageCount,
     },

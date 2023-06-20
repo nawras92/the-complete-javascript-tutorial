@@ -55,6 +55,8 @@
   background: tomato;
   opacity: 0.6;
   color: white;
+  font-size: 0.7rem;
+  padding: 0.2rem;
 }
 
 .button-success {

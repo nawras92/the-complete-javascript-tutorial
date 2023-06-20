@@ -12,12 +12,7 @@ export default function FilterBox() {
       <FilterByMeal />
       <FilterByTime />
       <div>
-        <Link
-          href="/"
-          className={`${styles['section-button']} ${styles['button-danger']}`}
-        >
-          {messages['clear']}
-        </Link>
+        <ClearFilter href="/" name={messages['clear']} />
       </div>
     </div>
   );
@@ -29,6 +24,7 @@ const FilterByTime = () => {
   const [maxValue, setMaxValue] = useState(240);
   const router = useRouter();
   const query = router?.query || {};
+  const { minDuration, maxDuration, ...newQuery } = query;
 
   return (
     <div className={styles['section']}>
@@ -74,6 +70,13 @@ const FilterByTime = () => {
       >
         {messages['apply']}
       </Link>
+      <ClearFilter
+        href={{
+          pathname: '/',
+          query: newQuery,
+        }}
+        name={messages['clear_duration']}
+      />
     </div>
   );
 };
@@ -82,7 +85,7 @@ const FilterByTime = () => {
 const FilterByMeal = () => {
   const router = useRouter();
   const query = router?.query || {};
-  const meal = query?.meal;
+  const { meal, ...newQuery } = query;
   return (
     <div className={styles['section']}>
       <p className={styles['section-title']}>{messages['filter_by_meal']}</p>
@@ -128,6 +131,13 @@ const FilterByMeal = () => {
       >
         {messages['dinner']}
       </Link>
+      <ClearFilter
+        href={{
+          pathname: '/',
+          query: newQuery,
+        }}
+        name={messages['clear_meal']}
+      />
     </div>
   );
 };
@@ -135,6 +145,7 @@ const FilterByMeal = () => {
 const SearchBox = () => {
   const router = useRouter();
   const routerQuery = router?.query || {};
+  const { searchTerm: st, ...newQuery } = routerQuery;
 
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -165,6 +176,13 @@ const SearchBox = () => {
       >
         {messages['search']}
       </Link>
+      <ClearFilter
+        href={{
+          pathname: '/',
+          query: newQuery,
+        }}
+        name={messages['clear_search']}
+      />
     </div>
   );
 };
@@ -206,5 +224,18 @@ const FilterByDate = () => {
         {messages['filter_by_date_desc']}
       </Link>
     </div>
+  );
+};
+
+const ClearFilter = (props) => {
+  const { href, name } = props;
+
+  return (
+    <Link
+      href={href}
+      className={`${styles['section-button']} ${styles['button-danger']}`}
+    >
+      {name}
+    </Link>
   );
 };

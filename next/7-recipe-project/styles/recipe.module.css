@@ -3,7 +3,6 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
-  max-width: 90%;
   margin: 1rem auto;
 }
 
@@ -160,4 +159,24 @@
   font-size: 1.2rem;
   font-weight: bold;
   text-decoration: underline;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  max-width: 90%;
+  margin: 1rem auto;
+}
+
+@media screen and (max-width: 787px) {
+  .wrapper {
+    display: block;
+  }
+  .sidebar {
+    max-width: 90%;
+    margin: 1rem auto;
+  }
+  .content {
+    margin-bottom: 1rem;
+  }
 }

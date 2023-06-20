@@ -5,6 +5,9 @@ const messages = {
   search_by_term: 'البحث عن الوصفات',
   search: 'بحث',
   clear: 'مسح عوامل التصفية',
+  clear_search: 'مسح البحث',
+  clear_duration: 'مسح التصفية حسب المدة',
+  clear_meal: 'مسح التصفية حسب الوجبة',
   breakfast: 'الإفطار',
   lunch: 'الغداء',
   dinner: 'العشاء',
@@ -13,6 +16,7 @@ const messages = {
   set_max_value: 'القيمة العليا',
   apply: 'تطبيق',
   minute: 'دقيقة',
+  filter_by_meal: 'التصفية حسب الوجبة',
 };
 
 export default messages;
