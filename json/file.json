@@ -1,0 +1,50 @@
+{
+  "people": [
+    {
+      "firstName": "Ali",
+      "lastName": "Sami",
+      "age": 8,
+      "books": ["book 1", "book 2", "book 3"],
+      "active": true,
+      "advanced": false,
+      "class": null,
+      "marks": {
+        "math": 90,
+        "Arabic": 100,
+        "French": 80
+      },
+      "address": {
+        "Country": "Jordan",
+        "City": "Amman",
+        "details": {
+          "street": "Street 1",
+          "zip code": "1111",
+          "building": 47
+        }
+      }
+    },
+    {
+      "firstName": "Jad",
+      "lastName": "Jad",
+      "age": 10,
+      "books": ["book 5", "book 6", "book 3"],
+      "active": false,
+      "advanced": false,
+      "class": "class 8",
+      "marks": {
+        "math": 70,
+        "Arabic": 50,
+        "French": 50
+      },
+      "address": {
+        "Country": "Algeria",
+        "City": "Algeria",
+        "details": {
+          "street": "Street 5",
+          "zip code": "115551",
+          "building": 100
+        }
+      }
+    }
+  ]
+}
