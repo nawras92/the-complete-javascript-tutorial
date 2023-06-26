@@ -15,6 +15,7 @@ export default function HomePage(props) {
   return (
     <Layout title={homepage_title}>
       <div className={styles['wrapper']}>
+        {' '}
         <div className={styles['content']}>
           <div className="page-container">
             <div className={styles['recipes-container']}>
