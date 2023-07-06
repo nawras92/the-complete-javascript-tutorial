@@ -1,12 +1,20 @@
+import { Cairo } from 'next/font/google';
+import NavList from './components/NavList';
+import './styles/reset.css';
+import './styles/globals.css';
+
+const cairo = Cairo({
+  variable: '--cairo-font',
+  subsets: ['arabic'],
+  weight: ['200', '300', '500', '700', '800', '900'],
+});
+
 export default function Layout({ children }) {
   return (
     <html>
-      <body>
-        <div style={{ background: 'lightblue', padding: '1rem' }}>
-          <h1>This is app /homepage layout</h1>
-
-          {children}
-        </div>
+      <body className={cairo.className}>
+        <NavList />
+        {children}
       </body>
     </html>
   );

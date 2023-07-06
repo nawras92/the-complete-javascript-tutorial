@@ -1,0 +1,94 @@
+.header {
+  background: var(--secondary-color);
+  color: #fff;
+  padding: 1rem;
+}
+
+/* .content { */
+/*   background: #fff; */
+/* } */
+.cards {
+  padding: 1rem;
+  background: #f4f4f4;
+}
+
+@media screen and (min-width: 900px) {
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+/* Card Styling */
+.card {
+  margin: 1rem auto;
+  box-shadow: 2px 2px 2px #fff;
+  background: #fff;
+  border-radius: 0 0 10px 10px;
+}
+
+.card-title {
+  background: var(--primary-color);
+  text-align: center;
+  color: #fff;
+  padding: 0.2rem;
+}
+
+.card-item {
+  max-width: 60%;
+  margin: 0.5rem auto;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  transition: all 1s ease-in;
+}
+
+@media screen and (min-width: 900px) {
+  .card-item {
+    max-width: 100%;
+    margin: 0;
+  }
+}
+
+.card-item:hover {
+  background: var(--secondary-color);
+  color: #fff;
+  cursor: crosshair;
+}
+
+.card-list {
+  list-style: disc;
+  margin: 1.5rem;
+}
+
+.card-list-item a:hover {
+  text-decoration: underline;
+}
+
+.button {
+  display: inline-block;
+  background: var(--dark-color);
+  color: #fff;
+  margin: 1rem auto;
+  padding: 0.5rem 0.8rem;
+  border-radius: 10px;
+  transition: all 1s ease-in;
+}
+
+.button:hover {
+  opacity: 0.8;
+}
+
+.card-btn {
+  display: inline-block;
+  background: var(--success-color);
+  color: #fff;
+  margin: 0.5rem;
+  padding: 0.3rem;
+  border-radius: 10px;
+  text-align: center;
+  transition: all 1s ease-in;
+}
+
+.card-btn:hover {
+  opacity: 0.5;
+}
