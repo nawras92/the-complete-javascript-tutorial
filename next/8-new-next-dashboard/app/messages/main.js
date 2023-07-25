@@ -12,6 +12,12 @@ const messages = {
   important_links: 'روابط هامة',
   create_new_articles: 'اضافة مقالات جديدة',
   search_articles: 'البحث عن المقالات',
+  article_id: 'المعرّف',
+  article_title: 'عنوان المقالة',
+  article_actions: 'الاجراءات',
+  show: 'عرض',
+  edit: 'تعديل',
+  delete: 'حذف',
 };
 
 export default messages;
