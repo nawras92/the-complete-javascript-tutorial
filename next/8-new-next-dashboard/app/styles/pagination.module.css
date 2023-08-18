@@ -1,0 +1,22 @@
+.pagination {
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.pagination a {
+  background: #f4f4f4;
+  display: inline-block;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  transition: all 1s ease-in;
+}
+
+.pagination a:hover {
+  background: #ccc;
+}
+
+.active-page {
+  color: var(--primary-color);
+}

@@ -1,4 +1,5 @@
 import styles from '../styles/table.module.css';
+import FilterBox from './FilterBox';
 import messages from '../messages/main';
 
 export default function CustomDataGrid(props) {
@@ -6,9 +7,7 @@ export default function CustomDataGrid(props) {
   return (
     <div className={styles['container']}>
       <div className={styles['inner-container']}>
-        <div className={styles['filter-box']}>
-          <input type="text" placeholder="search articles" />
-        </div>
+        <FilterBox />
 
         <table className={styles['table']}>
           <thead>
