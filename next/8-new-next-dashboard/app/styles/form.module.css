@@ -1,0 +1,77 @@
+.container {
+  background: #f4f4f4;
+  width: 70%;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+@media screen and (max-width: 787px) {
+  .container {
+    width: 90%;
+  }
+}
+
+.container-inner {
+  background: #fff;
+}
+
+.container-inner h1 {
+  text-align: center;
+  margin: 1rem;
+  border-bottom: 1px var(--secondary-color) dotted;
+  padding: 1rem;
+}
+
+.form-alert {
+  background: #ccc;
+  margin: 1rem;
+  padding: 1rem;
+  font-size: 0.8rem;
+}
+
+.form-group {
+  margin: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin: 1rem;
+  font-size: 0.8rem;
+}
+
+.form-group input {
+  display: inline-block;
+  margin: auto 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-group textarea {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 100%;
+  min-height: 150px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.form-group textarea:focus {
+  border-color: var(--secondary-color);
+  outline: none;
+}
+
+.submit-button {
+  display: block;
+  background: var(--success-color);
+  color: #fff;
+  padding: 0.4rem 1.2rem;
+  border-radius: 10px;
+  margin: 2rem auto;
+  transition: all 1s ease-in;
+}
+
+.submit-button:hover {
+  opacity: 0.7;
+}

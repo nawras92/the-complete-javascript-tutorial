@@ -18,6 +18,7 @@ const messages = {
   show: 'عرض',
   edit: 'تعديل',
   delete: 'حذف',
+  confirm_delete: 'هل أنت متأكد من حذف المقالة؟',
 };
 
 export default messages;

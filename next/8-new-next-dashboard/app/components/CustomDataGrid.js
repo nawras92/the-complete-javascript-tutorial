@@ -1,5 +1,7 @@
+import Link from 'next/link';
 import styles from '../styles/table.module.css';
 import FilterBox from './FilterBox';
+import DeleteArticle from './DeleteArticle';
 import messages from '../messages/main';
 
 export default function CustomDataGrid(props) {
@@ -25,15 +27,19 @@ export default function CustomDataGrid(props) {
                     <td>{article.id}</td>
                     <td>{article.title}</td>
                     <td>
-                      <button className={styles['btn-show']}>
+                      <Link
+                        href={`/articles/${article.id}`}
+                        className={styles['btn-show']}
+                      >
                         {messages['show']}
-                      </button>
-                      <button className={styles['btn-edit']}>
+                      </Link>
+                      <Link
+                        href={`/articles/edit/${article.id}`}
+                        className={styles['btn-edit']}
+                      >
                         {messages['edit']}
-                      </button>
-                      <button className={styles['btn-delete']}>
-                        {messages['delete']}
-                      </button>
+                      </Link>
+                      <DeleteArticle articleId={article.id} />
                     </td>
                   </tr>
                 );

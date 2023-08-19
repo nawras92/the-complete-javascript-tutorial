@@ -1,0 +1,3 @@
+## Points to consider
+1- Check articles Sorting -  (not so important)
+2- All API points must be authenticated (Add/DELETE/UPDATE)
