@@ -1,3 +1,4 @@
+import { cookies } from 'next/headers';
 import { Cairo } from 'next/font/google';
 import NavList from './components/NavList';
 import './styles/reset.css';
@@ -10,10 +11,14 @@ const cairo = Cairo({
 });
 
 export default function Layout({ children }) {
+  // Check if the user logged In
+  const cookiesStore = cookies();
+  const userCookie = cookiesStore.get('loggedIn_user')?.value;
+  const isLoggedIn = !!userCookie;
   return (
     <html>
       <body className={cairo.className}>
-        <NavList />
+        <NavList loggedIn={isLoggedIn} />
         {children}
       </body>
     </html>

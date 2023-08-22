@@ -19,6 +19,8 @@ const messages = {
   edit: 'تعديل',
   delete: 'حذف',
   confirm_delete: 'هل أنت متأكد من حذف المقالة؟',
+  login: 'تسجيل الدخول',
+  logout: 'تسجيل الخروج',
 };
 
 export default messages;
