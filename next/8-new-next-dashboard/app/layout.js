@@ -1,6 +1,8 @@
 import { cookies } from 'next/headers';
 import { Cairo } from 'next/font/google';
 import NavList from './components/NavList';
+import styles from './styles/auth.module.css';
+import LoginForm from './components/LoginForm';
 import './styles/reset.css';
 import './styles/globals.css';
 
@@ -19,7 +21,14 @@ export default function Layout({ children }) {
     <html>
       <body className={cairo.className}>
         <NavList loggedIn={isLoggedIn} />
-        {children}
+        {isLoggedIn && children}
+        {!isLoggedIn && (
+          <div className={styles['container']}>
+            <div className={styles['container-inner']}>
+              <LoginForm />
+            </div>
+          </div>
+        )}
       </body>
     </html>
   );

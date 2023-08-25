@@ -34,6 +34,7 @@ export default function LoginForm() {
 
     if (data?.success) {
       setMessage(data?.message);
+      window.location.href = '/';
     } else if (data?.error) {
       setMessage(data?.error);
     } else {
