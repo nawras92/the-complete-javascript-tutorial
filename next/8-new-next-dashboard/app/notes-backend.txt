@@ -1,0 +1,8 @@
+
+1- API Backend is built with PHP.
+2- The repo URL for the PHP code is:
+https://github.com/nawras92/php-scripts/tree/main/articles-api
+-------
+To Do:
+1- Add Login/Logout in the API Backend.
+2- Connect the nextjs with PHP backend

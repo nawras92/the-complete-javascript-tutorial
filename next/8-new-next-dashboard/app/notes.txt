@@ -1,14 +1,7 @@
-## Points to consider
-1- Check articles Sorting -  (not so important)
-2- All API points must be authenticated (Add/DELETE/UPDATE)
----
-forms: needs  validation and sanitization
-----
-3- Logout Functionality  -  Page, api, delete Cookies
-4- Encrypt password, maybe generate tokens
-5- Redirects: logout => login, login => dashboard
-6- protect pages with login
-7- Show users info in profile
-----
-replace array data with something better
-
+---------
+To Do:
+1- Show users info in profile
+2- Connect API with nextjs
+3- Validation and Sanitization.
+4- Check Articles Sorting
+5- All API points must be authenticated.
