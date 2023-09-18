@@ -15,7 +15,7 @@ export default function DeleteArticle(props) {
       });
       const data = await response.json();
       if (data?.success) {
-        alert(data?.success);
+        alert(data?.message);
       }
       if (data?.error) {
         alert(data?.error);

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import articles from '../../data/articles';
+import { backendUrl } from '../../website-config';
 
 // Get Articles and Single Articles
 export async function GET(request) {
@@ -7,13 +8,17 @@ export async function GET(request) {
   const id = searchParams.get('id');
   if (id) {
     // Process the get request in the backend
-    const article = articles.find((a) => a.id == id);
-    if (article) {
-      return NextResponse.json({ article });
+    const response = await fetch(backendUrl + '/api/articles.php?id=' + id);
+    const data = await response.json();
+    if (data?.id) {
+      return NextResponse.json({ article: data });
     } else {
-      return NextResponse.json({ error: 'Article does NOT exist' });
+      return NextResponse.json(data);
     }
   } else {
+    // Fetch from PHP backend
+    const response = await fetch(backendUrl + '/api/articles.php');
+    const articles = await response.json();
     return NextResponse.json({ articles });
   }
 }
@@ -26,21 +31,19 @@ export async function POST(request) {
       return NextResponse.json({ error: 'title cannot be empty' });
     } else {
       const newArticle = {
-        id: articles.length + 1,
         title: dataReceived.title,
         content: dataReceived.content || '',
         description: dataReceived.description || '',
-        author: dataReceived.author || '',
-        keywords: dataReceived.keywords || [],
+        author_id: dataReceived.author_id || 1,
+        keywords: dataReceived.keywords || '',
         category: dataReceived.category || '',
-        createDate: getCurrentDate(),
-        updateDate: getCurrentDate(),
       };
-      articles.push(newArticle);
-      return NextResponse.json({
-        success: 'Article got added successfully',
-        newArticle,
+      const response = await fetch(backendUrl + '/api/articles.php', {
+        method: 'POST',
+        body: JSON.stringify(newArticle),
       });
+      const data = await response.json();
+      return NextResponse.json(data);
     }
   } catch (e) {
     return NextResponse.json({ error: e });
@@ -53,17 +56,11 @@ export async function DELETE(request) {
   const id = searchParams.get('id');
   if (id) {
     // Process the get request in the backend
-    const article = articles.find((a) => a.id == id);
-    if (article) {
-      // Delete Article
-      const indexToRemove = articles.findIndex((i) => i.id == article.id);
-      articles.splice(indexToRemove, 1);
-      return NextResponse.json({
-        success: 'Article got deleted successfully.',
-      });
-    } else {
-      return NextResponse.json({ error: 'Article does NOT exist' });
-    }
+    const response = await fetch(backendUrl + '/api/articles.php?id=' + id, {
+      method: 'DELETE',
+    });
+    const data = await response.json();
+    return NextResponse.json({ success: true, message: data?.message });
   } else {
     return NextResponse.json({ error: 'ID is NOT provided' });
   }
@@ -75,29 +72,13 @@ export async function PUT(request) {
   const id = searchParams.get('id');
   if (id) {
     // Process the get request in the backend
-    const article = articles.find((a) => a.id == id);
-    if (article) {
-      // Update Article
-      const indexToUpdate = articles.findIndex((i) => i.id == article.id);
-      const dataReceived = await request.json();
-      articles[indexToUpdate].title =
-        dataReceived.title || articles[indexToUpdate].title;
-      articles[indexToUpdate].content =
-        dataReceived.content || articles[indexToUpdate].content;
-      articles[indexToUpdate].keywords =
-        dataReceived.keywords || articles[indexToUpdate].keywords;
-      articles[indexToUpdate].category =
-        dataReceived.category || articles[indexToUpdate].category;
-      articles[indexToUpdate].author =
-        dataReceived.author || articles[indexToUpdate].author;
-      articles[indexToUpdate].updateDate = getCurrentDate();
-      return NextResponse.json({
-        success: 'Article got updated successfully.',
-        updatedArticle: articles[indexToUpdate],
-      });
-    } else {
-      return NextResponse.json({ error: 'Article does NOT exist' });
-    }
+    const dataReceived = await request.json();
+    const response = await fetch(backendUrl + '/api/articles.php?id=' + id, {
+      method: 'PUT',
+      body: JSON.stringify(dataReceived),
+    });
+    const data = await response.json();
+    return NextResponse.json(data);
   } else {
     return NextResponse.json({ error: 'ID is NOT provided' });
   }

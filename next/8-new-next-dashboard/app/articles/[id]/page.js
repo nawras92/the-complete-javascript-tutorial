@@ -19,7 +19,7 @@ export default async function SingleArticlePage(context) {
         <hr />
         <p>{article.content}</p>
         <p>{article.author}</p>
-        <p>{article.keywords.join(', ')}</p>
+        <p>{article.keywords}</p>
         <p>{article.category}</p>
         <p>{article.createDate}</p>
         <p>{article.updateDate}</p>

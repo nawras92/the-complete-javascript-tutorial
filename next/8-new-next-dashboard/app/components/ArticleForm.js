@@ -13,7 +13,7 @@ export default function ArticleForm(props) {
     title: '',
     content: '',
     description: '',
-    author: '',
+    author_id: '',
     category: '',
     keywords: '',
   };

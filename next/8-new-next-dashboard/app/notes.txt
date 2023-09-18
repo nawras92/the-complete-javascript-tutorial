@@ -1,7 +1,11 @@
 ---------
 To Do:
 1- Show users info in profile
-2- Connect API with nextjs
 3- Validation and Sanitization.
 4- Check Articles Sorting
 5- All API points must be authenticated.
+--------
+
+
+Done
+2- Connect API with nextjs

@@ -1,16 +1,30 @@
-import articles from '../data/articles';
 import messages from '../messages/main';
 import styles from '../styles/dashboard.module.css';
 import CustomDataGrid from '../components/CustomDataGrid';
 import Pagination from '../components/Pagination';
+import { nextUrl } from '../website-config';
 
-const sortedArticles = articles.sort(
-  (a, b) => new Date(b.updateDate) - new Date(a.updateDate)
-);
+async function fetchData() {
+  const response = await fetch(nextUrl + '/articles/api', {
+    next: {
+      revalidate: 0,
+    },
+  });
+  const data = await response.json();
+  return data?.articles;
+}
 
-export default function ArticlesPage(context) {
+export default async function ArticlesPage(context) {
   const { searchParams } = context;
   const { searchTerm = '', page = 1 } = searchParams;
+
+  // fetch data
+  const articles = await fetchData();
+
+  // Sorted articles
+  const sortedArticles = articles.sort(
+    (a, b) => new Date(b.updateDate) - new Date(a.updateDate)
+  );
 
   // Filter Articles
   const filteredArticles = sortedArticles.filter((a) =>
