@@ -1,7 +1,15 @@
+1- Fix an error:  remove layouts
+2- Middleware - authenticator  
+3- article api - all articles
+4- article api - single article
+5- article api - delete article + headers
+6- article api - edit article + headers
+7- article api - add article + headers
+8- explain more on APIs    
 ---------
 To Do:
-1- Show users info in profile
-3- Validation and Sanitization.
+1- Show users info in profile //
+3- Validation and Sanitization. //
 4- Check Articles Sorting
 5- All API points must be authenticated.
 --------

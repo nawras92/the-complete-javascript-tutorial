@@ -21,14 +21,7 @@ export default function Layout({ children }) {
     <html>
       <body className={cairo.className}>
         <NavList loggedIn={isLoggedIn} />
-        {isLoggedIn && children}
-        {!isLoggedIn && (
-          <div className={styles['container']}>
-            <div className={styles['container-inner']}>
-              <LoginForm />
-            </div>
-          </div>
-        )}
+        {children}
       </body>
     </html>
   );
