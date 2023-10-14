@@ -30,15 +30,13 @@ export default function LoginForm() {
       method: 'POST',
       body: JSON.stringify(formValues),
     });
-    const data = await response.json();
+    const result = await response.json();
 
-    if (data?.success) {
-      setMessage(data?.message);
+    if (result?.ok) {
+      setMessage(result?.message);
       window.location.href = '/';
-    } else if (data?.error) {
-      setMessage(data?.error);
     } else {
-      setMessage('Something Wrong');
+      setMessage(result?.message);
     }
   };
   return (

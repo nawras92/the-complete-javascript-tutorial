@@ -15,7 +15,9 @@ const cairo = Cairo({
 export default function Layout({ children }) {
   // Check if the user logged In
   const cookiesStore = cookies();
-  const userCookie = cookiesStore.get('loggedIn_user')?.value;
+  const userCookie = cookiesStore.get(
+    'lwn_nextjs_dashboard_logged_in_token'
+  )?.value;
   const isLoggedIn = !!userCookie;
   return (
     <html>
