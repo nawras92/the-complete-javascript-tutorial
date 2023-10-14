@@ -9,17 +9,37 @@ export async function GET(request) {
   if (id) {
     // Process the get request in the backend
     const response = await fetch(backendUrl + '/api/articles.php?id=' + id);
-    const data = await response.json();
-    if (data?.id) {
-      return NextResponse.json({ article: data });
+    const result = await response.json();
+    if (result['status'] === 'success') {
+      return NextResponse.json({
+        ok: true,
+        data: result['data'],
+      });
     } else {
-      return NextResponse.json(data);
+      return NextResponse.json({
+        ok: false,
+        code: result?.error?.code,
+        message: `Backend Error (${result?.error?.code}): ${result?.error?.message}`,
+      });
     }
   } else {
+    // All articles
     // Fetch from PHP backend
     const response = await fetch(backendUrl + '/api/articles.php');
-    const articles = await response.json();
-    return NextResponse.json({ articles });
+    const result = await response.json();
+    //status, data, message, error
+    if (result['status'] === 'success') {
+      return NextResponse.json({
+        ok: true,
+        data: result['data'],
+      });
+    } else {
+      return NextResponse.json({
+        ok: false,
+        code: result?.error?.code,
+        message: `Backend Error (${result?.error?.code}): ${result?.error?.message}`,
+      });
+    }
   }
 }
 

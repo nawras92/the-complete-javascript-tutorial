@@ -1,7 +1,8 @@
-1- Fix an error:  remove layouts
-2- Middleware - authenticator  
-3- article api - all articles
-4- article api - single article
+1- Fix an error:  remove layouts (done)
+login/logout (done)
+2- Middleware - authenticator   
+3- article api - all articles (done)
+4- article api - single article (done)
 5- article api - delete article + headers
 6- article api - edit article + headers
 7- article api - add article + headers

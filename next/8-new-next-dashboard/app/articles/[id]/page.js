@@ -3,14 +3,23 @@ import { notFound } from 'next/navigation';
 import styles from '../../styles/single.module.css';
 
 export default async function SingleArticlePage(context) {
-  const data = await fetchData(context);
+  const result = await fetchData(context);
 
-  if (!data.article) {
-    // not found
-    return notFound();
+  if (!result.ok) {
+    if (result.code === 404) {
+      // not found
+      return notFound();
+    }
+    return (
+      <div className={styles['container']}>
+        <div className={styles['container-inner']}>
+          <p>{result.message}</p>
+        </div>
+      </div>
+    );
   }
 
-  const article = data?.article;
+  const article = result?.data;
   return (
     <div className={styles['container']}>
       <div className={styles['container-inner']}>

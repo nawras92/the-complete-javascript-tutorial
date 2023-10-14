@@ -10,8 +10,8 @@ async function fetchData() {
       revalidate: 0,
     },
   });
-  const data = await response.json();
-  return data?.articles;
+  const result = await response.json();
+  return result;
 }
 
 export default async function ArticlesPage(context) {
@@ -19,26 +19,27 @@ export default async function ArticlesPage(context) {
   const { searchTerm = '', page = 1 } = searchParams;
 
   // fetch data
-  const articles = await fetchData();
+  const result = await fetchData();
 
-  // Sorted articles
-  const sortedArticles = articles.sort(
-    (a, b) => new Date(b.updateDate) - new Date(a.updateDate)
-  );
+  // // Sorted articles
+  // const sortedArticles = articles.sort(
+  //   (a, b) => new Date(b.updateDate) - new Date(a.updateDate)
+  // );
 
-  // Filter Articles
-  const filteredArticles = sortedArticles.filter((a) =>
-    a.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // // Filter Articles
+  // const filteredArticles = sortedArticles.filter((a) =>
+  //   a.title.toLowerCase().includes(searchTerm.toLowerCase())
+  // );
 
-  // Pagination Functionality
-  const itemsPerPage = 5;
-  const totalItems = filteredArticles.length;
-  const numberOfPages = Math.ceil(totalItems / itemsPerPage);
-  const startIndex = (page - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const articlesForPage = filteredArticles.slice(startIndex, endIndex);
+  // // Pagination Functionality
+  // const itemsPerPage = 5;
+  // const totalItems = filteredArticles.length;
+  // const numberOfPages = Math.ceil(totalItems / itemsPerPage);
+  // const startIndex = (page - 1) * itemsPerPage;
+  // const endIndex = startIndex + itemsPerPage;
+  // const articlesForPage = filteredArticles.slice(startIndex, endIndex);
 
+  const numberOfPages = 5;
   return (
     <div>
       <header className={styles['header']}>
@@ -47,13 +48,18 @@ export default async function ArticlesPage(context) {
         </h1>
       </header>
       <main>
-        <CustomDataGrid data={articlesForPage} />
-        <Pagination
-          pathname="/articles"
-          oldQuery={{ searchTerm }}
-          currentPage={page}
-          numberOfPages={numberOfPages}
-        />
+        {result?.ok && (
+          <>
+            <CustomDataGrid data={result?.data} />
+            <Pagination
+              pathname="/articles"
+              oldQuery={{ searchTerm }}
+              currentPage={page}
+              numberOfPages={numberOfPages}
+            />
+          </>
+        )}
+        {!result?.ok && <p>{result?.message} </p>}
       </main>
     </div>
   );
