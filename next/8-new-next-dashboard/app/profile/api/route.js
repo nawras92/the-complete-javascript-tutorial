@@ -18,12 +18,12 @@ export async function GET(request) {
   });
   const result = await response.json();
   if (result['status'] === 'success') {
-    return NextResponse({
+    return NextResponse.json({
       ok: true,
       data: result?.data,
     });
   } else {
-    return NextResponse({
+    return NextResponse.json({
       ok: false,
       code: result?.error?.code,
       message: `Backend Error(${result?.error?.code}): ${result?.error?.message} `,

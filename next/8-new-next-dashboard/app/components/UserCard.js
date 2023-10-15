@@ -23,10 +23,10 @@ export default function UserCard() {
   }
   return (
     <div>
-      <p>User Email: email@mail.com</p>
-      <p>User Firstname: Ali</p>
-      <p>User lastName: Ola</p>
-      <p>User password: 111</p>
+      <p>User Email: {user?.email}</p>
+      <p>User Firstname: {user?.firstName}</p>
+      <p>User lastName: {user?.lastName}</p>
+      <p>User password: {user?.password}</p>
     </div>
   );
 }
