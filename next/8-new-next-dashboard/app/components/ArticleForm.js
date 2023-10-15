@@ -24,9 +24,9 @@ export default function ArticleForm(props) {
     async function getArticle() {
       if (type === 'edit') {
         const response = await fetch(`/articles/api?id=${articleId}`);
-        const data = await response.json();
-        if (data?.article) {
-          setFormValues(data?.article);
+        const result = await response.json();
+        if (result?.data) {
+          setFormValues(result?.data);
         }
       }
     }
@@ -56,11 +56,11 @@ export default function ArticleForm(props) {
       method,
       body: JSON.stringify(formValues),
     });
-    const data = await response.json();
-    if (data?.error) {
-      setMessage(data?.error);
-    } else {
+    const result = await response.json();
+    if (result?.ok) {
       setMessage(successMessage);
+    } else {
+      setMessage(result?.message);
     }
   };
   return (

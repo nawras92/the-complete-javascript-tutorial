@@ -1,15 +1,7 @@
-1- Fix an error:  remove layouts (done)
-login/logout (done)
-2- Middleware - authenticator   
-3- article api - all articles (done)
-4- article api - single article (done)
-5- article api - delete article + headers
-6- article api - edit article + headers
-7- article api - add article + headers
-8- explain more on APIs    
+// todo: add logged user id in the author_id field
 ---------
 To Do:
-1- Show users info in profile //
+1- Show users info in profile //  who am I
 3- Validation and Sanitization. //
 4- Check Articles Sorting
 5- All API points must be authenticated.

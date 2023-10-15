@@ -13,13 +13,9 @@ export default function DeleteArticle(props) {
       const response = await fetch(`/articles/api?id=${articleId}`, {
         method: 'DELETE',
       });
-      const data = await response.json();
-      if (data?.success) {
-        alert(data?.message);
-      }
-      if (data?.error) {
-        alert(data?.error);
-      }
+      const result = await response.json();
+      alert(result?.message);
+      window.location.reload();
     }
   };
   return (
