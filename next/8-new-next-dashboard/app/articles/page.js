@@ -4,8 +4,10 @@ import CustomDataGrid from '../components/CustomDataGrid';
 import Pagination from '../components/Pagination';
 import { nextUrl } from '../website-config';
 
-async function fetchData() {
-  const response = await fetch(nextUrl + '/articles/api', {
+async function fetchData(searchParams) {
+  const queryStr = new URLSearchParams(searchParams).toString();
+
+  const response = await fetch(nextUrl + '/articles/api?' + queryStr, {
     next: {
       revalidate: 0,
     },
@@ -16,30 +18,11 @@ async function fetchData() {
 
 export default async function ArticlesPage(context) {
   const { searchParams } = context;
-  const { searchTerm = '', page = 1 } = searchParams;
+  const { searchTerm = '', page = 1, perPage = 5 } = searchParams;
 
   // fetch data
-  const result = await fetchData();
+  const result = await fetchData(searchParams);
 
-  // // Sorted articles
-  // const sortedArticles = articles.sort(
-  //   (a, b) => new Date(b.updateDate) - new Date(a.updateDate)
-  // );
-
-  // // Filter Articles
-  // const filteredArticles = sortedArticles.filter((a) =>
-  //   a.title.toLowerCase().includes(searchTerm.toLowerCase())
-  // );
-
-  // // Pagination Functionality
-  // const itemsPerPage = 5;
-  // const totalItems = filteredArticles.length;
-  // const numberOfPages = Math.ceil(totalItems / itemsPerPage);
-  // const startIndex = (page - 1) * itemsPerPage;
-  // const endIndex = startIndex + itemsPerPage;
-  // const articlesForPage = filteredArticles.slice(startIndex, endIndex);
-
-  const numberOfPages = 5;
   return (
     <div>
       <header className={styles['header']}>
@@ -53,9 +36,9 @@ export default async function ArticlesPage(context) {
             <CustomDataGrid data={result?.data} />
             <Pagination
               pathname="/articles"
-              oldQuery={{ searchTerm }}
+              oldQuery={{ searchTerm, perPage }}
               currentPage={page}
-              numberOfPages={numberOfPages}
+              numberOfPages={result?.meta?.totalPages}
             />
           </>
         )}

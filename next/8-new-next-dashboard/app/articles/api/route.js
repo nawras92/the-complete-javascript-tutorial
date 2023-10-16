@@ -24,8 +24,18 @@ export async function GET(request) {
     }
   } else {
     // All articles
+    // Get Search params
+    const page = searchParams.get('page') || 1;
+    const perPage = searchParams.get('perPage') || 5;
+    const order = searchParams.get('order') || 'desc';
+    const searchTerm = searchParams.get('searchTerm') || '';
+    // Create search params string
+    const searchParamsString = `page=${page}&perPage=${perPage}&order=${order}&search=${searchTerm}`;
+
     // Fetch from PHP backend
-    const response = await fetch(backendUrl + '/api/articles.php');
+    const response = await fetch(
+      backendUrl + '/api/articles.php?' + searchParamsString
+    );
     const result = await response.json();
     //status, data, message, error
     if (result['status'] === 'success') {
@@ -55,7 +65,7 @@ export async function POST(request) {
         content: dataReceived.content || '',
         description: dataReceived.description || '',
         // todo: add logged user id in the author_id field
-        author_id: dataReceived.author_id || 1,
+        // author_id: dataReceived.author_id || 1,
         keywords: dataReceived.keywords || '',
         category: dataReceived.category || '',
       };

@@ -1,12 +1,13 @@
 // todo: add logged user id in the author_id field
 ---------
-To Do:
-1- Show users info in profile //  who am I
-3- Validation and Sanitization. //
-4- Check Articles Sorting
-5- All API points must be authenticated.
 --------
+Backend: 
+1- search
+2- pagination
+3- sorting
+
+frontend: queries
 
 
-Done
-2- Connect API with nextjs
+
+

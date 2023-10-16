@@ -13,7 +13,6 @@ export default function ArticleForm(props) {
     title: '',
     content: '',
     description: '',
-    author_id: '',
     category: '',
     keywords: '',
   };
@@ -99,16 +98,6 @@ export default function ArticleForm(props) {
               onChange={handleChange}
               name="content"
               id="content"
-            />
-          </div>
-          <div className={styles['form-group']}>
-            <label htmlFor="author">{messages.author}</label>
-            <input
-              value={formValues.author}
-              onChange={handleChange}
-              type="text"
-              name="author"
-              id="author"
             />
           </div>
           <div className={styles['form-group']}>
