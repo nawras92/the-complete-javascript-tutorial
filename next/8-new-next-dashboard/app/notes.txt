@@ -1,13 +1,11 @@
-// todo: add logged user id in the author_id field
----------
---------
-Backend: 
-1- search
-2- pagination
-3- sorting
+1- Display articles for the logged in user in the dashboard (ONLY)
+// api point articles.php?authorId=1
+2- Article author can edit/delete his/her own article, other users can NOT.
+// api: edit./delete: token user id = article.id
 
-frontend: queries
-
+superadmin:   role: users ==> super admin
+// api: is super admin
+// 
 
 
 
